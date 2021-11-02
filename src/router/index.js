@@ -6,7 +6,7 @@ Vue.use(Router)
 const login = () => Promise.resolve(require('@/view/Login'))
 
 // 管理员页
-const manageTemplate = () => Promise.resolve(require('@/components/Manage/ManageTemplate'))
+const manageTemplate = () => Promise.resolve(require('@/components/PageTemplate/Template'))
 const manageHome = () => Promise.resolve(require('@/view/Home'))
 
 // 生产用人

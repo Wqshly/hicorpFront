@@ -1,185 +1,186 @@
 <template>
-  <div class="fill-container scroll-style">
-    <!-- 展示图区 -->
-    <div class="graphic-container">
-      <!-- 底层绘图 -->
-      <div class="underlying-background">
-        <div style="height: 50px;"></div>
-        <!-- 厂区 -->
-        <div class="factory-area">
-          <!-- 钢筋笼区 -->
-          <div class="reinforcement-cage-area">
-            <a href="#/employment/department">
-              <!-- 顶层区域话分(实现点击跳转到区域详情页) -->
-              <div class="area-style">
-                <p>钢筋笼加工区</p>
-              </div>
-            </a>
-          </div>
-          <!-- 生产区车间 -->
-          <div class="production-workshop">
-            <!-- 生产区 -->
-            <div class="production-area">
-              <!-- 实际产线区域 -->
-              <div class="operation-area">
-                <!-- 横移车位 -->
-                <div class="traverse-car-area">
-                  <!-- 水平分割线 -->
-                  <div class="horizontal-border"></div>
-                  <div class="traverse-car-center">
-                    <!-- 垂直分割线 -->
-                    <div class="vertical-border"></div>
-                    <!-- 垂直分割线 -->
-                    <div class="vertical-border" style="left: 4px;"></div>
-                    <!-- 垂直分割线 -->
-                    <div class="vertical-border" style="left: 14px;"></div>
-                    <div class="traverse-car-core">
-                      <!-- 横移小车位 -->
-                      <div class="traverse-car">
-                        <div class="horizontal-border traverse-car-track"></div>
-                        <div class="horizontal-border"
-                             style="top: 13px;width: calc(100% - 10px);left: 5px;height: 3px;"></div>
-                        <div class="horizontal-border"
-                             style="top: 20px;width: calc(100% - 10px);left: 5px;height: 3px;"></div>
-                        <div class="horizontal-border traverse-car-track" style="top: 32px;"></div>
-                        <div v-for="index in 4" class="vertical-border traverse-track-sleeper"
-                             :style="'left: calc(' + (index * 15) + '% + 5px);'" :key="index"></div>
-                        <div v-for="index in 4" class="vertical-border traverse-track-sleeper" style="top: 20px;"
-                             :style="'left: calc(' + (index * 15) + '% + 5px);'" :key="index"></div>
-                      </div>
-                    </div>
-                    <!-- 垂直分割线 -->
-                    <div class="vertical-border" style="left: calc(100% - 15px);"></div>
-                    <!-- 垂直分割线 -->
-                    <div class="vertical-border" style="left: calc(100% - 5px);"></div>
-                    <!-- 垂直分割线 -->
-                    <div class="vertical-border" style="left: calc(100% - 1px);"></div>
-                  </div>
-                  <!-- 水平分割线 -->
-                  <div class="horizontal-border" style="top: 100%;"></div>
-                </div>
-                <!-- 产线区域 -->
-                <div class="production-line-area">
-                  <div v-for="index of 3" :key="index" style="height: 20%;width: 100%;position: relative;">
-                    <!-- 水平分割线 -->
-                    <div class="horizontal-border" style="height: 3px; top: 5px;"></div>
-                    <div class="horizontal-border" style="height: 3px; top: 16px;"></div>
-                    <div v-for="index in 100" class="vertical-border traverse-track-sleeper" style="top: 5px;"
-                         :style="'left: calc(' + (index - 1) + '% + 3px);'" :key="index"></div>
-                    <div v-for="index in 100" class="vertical-border traverse-track-sleeper" style="top: 24px;"
-                         :style="'left: calc(' + (index - 1) + '% + 3px);'" :key="index"></div>
-                    <div v-for="index of 12" :key="index" style="position: relative;">
-                      <mould-car style="top: 2px;position: absolute;"
-                                 :style="'left: calc(' + (index - 1) * 8.33 + '%);'"></mould-car>
-                    </div>
-                    <!-- 水平分割线 -->
-                    <div class="horizontal-border" style="height: 3px; top: 24px;"></div>
-                    <div class="horizontal-border" style="height: 3px; top: 35px;"></div>
-                  </div>
-                  <div v-for="index of 2" :key="index" style="height: 20%;width: 100%;position: relative;">
-                    <div v-for="index of 8" :key="index" style="position: relative;">
-                      <mould-car style="top: 30px;position: absolute;"
-                                 :style="'left: calc(' + (index - 1) * 12.5 + '%);'"
-                                 :mould-color="mouldColor[index - 1]"></mould-car>
-                    </div>
-                    <!-- 水平分割线 -->
-                    <div class="horizontal-border" style="height: 3px; bottom: 5px;"></div>
-                    <div class="horizontal-border" style="height: 3px; bottom: 16px;"></div>
-                    <div v-for="index in 100" class="vertical-border traverse-track-sleeper" style="bottom: 5px;"
-                         :style="'left: calc(' + (index - 1) + '% + 3px);'" :key="index"></div>
-                    <div v-for="index in 100" class="vertical-border traverse-track-sleeper" style="bottom: 24px;"
-                         :style="'left: calc(' + (index - 1) + '% + 3px);'" :key="index"></div>
-                    <!-- 水平分割线 -->
-                    <div class="horizontal-border" style="height: 3px; bottom: 24px;"></div>
-                    <div class="horizontal-border" style="height: 3px; bottom: 35px;"></div>
-                  </div>
-                  <!-- 水泥搅拌位 -->
-                  <div class="cement-mixer">
-                    <div></div>
-                  </div>
-                </div>
-                <!-- 横移车位 -->
-                <div class="traverse-car-area">
-                  <!-- 水平分割线 -->
-                  <div class="horizontal-border"></div>
-                  <div class="traverse-car-center">
-                    <!-- 垂直分割线 -->
-                    <div class="vertical-border"></div>
-                    <!-- 垂直分割线 -->
-                    <div class="vertical-border" style="left: 4px;"></div>
-                    <!-- 垂直分割线 -->
-                    <div class="vertical-border" style="left: 14px;"></div>
-                    <div class="traverse-car-core">
-                      <!-- 横移小车位 -->
-                      <div class="traverse-car">
-                        <div class="horizontal-border traverse-car-track"></div>
-                        <div class="horizontal-border"
-                             style="top: 13px;width: calc(100% - 10px);left: 5px;height: 3px;"></div>
-                        <div class="horizontal-border"
-                             style="top: 20px;width: calc(100% - 10px);left: 5px;height: 3px;"></div>
-                        <div class="horizontal-border traverse-car-track" style="top: 32px;"></div>
-                        <div v-for="index in 4" class="vertical-border traverse-track-sleeper"
-                             :style="'left: ' + (index * 8 + 5) + 'px;'" :key="index"></div>
-                        <div v-for="index in 4" class="vertical-border traverse-track-sleeper" style="top: 20px;"
-                             :style="'left: ' + (index * 8 + 5) + 'px;'" :key="index"></div>
-                      </div>
-                    </div>
-                    <!-- 垂直分割线 -->
-                    <div class="vertical-border" style="left: calc(100% - 15px);"></div>
-                    <!-- 垂直分割线 -->
-                    <div class="vertical-border" style="left: calc(100% - 5px);"></div>
-                    <!-- 垂直分割线 -->
-                    <div class="vertical-border" style="left: calc(100% - 1px);"></div>
-                  </div>
-                  <!-- 水平分割线 -->
-                  <div class="horizontal-border" style="top: 100%;"></div>
-                </div>
-              </div>
-              <!-- 过道区域 -->
-              <div class="aisle-area"></div>
-              <a href="#/employment/department">
-                <!-- 顶层区域话分(实现点击跳转到区域详情页) -->
-                <div class="area-style">
-                  <p>生产区</p>
-                </div>
-              </a>
-            </div>
-            <!-- 添加标号区域 -->
-            <div class="add-key-area">
-              <a href="#/employment/department">
-                <!-- 顶层区域话分(实现点击跳转到区域详情页) -->
-                <div class="area-style">
-                  <p>标号区</p>
-                </div>
-              </a>
-            </div>
-          </div>
-          <!-- 外场区域 -->
-          <div class="outside-area">
-            <!-- 外场水养区 -->
-            <div class="pool-area">
-              <a href="#/employment/department">
-                <!-- 顶层区域话分(实现点击跳转到区域详情页) -->
-                <div class="area-style">
-                  <p>静置区</p>
-                </div>
-              </a>
-            </div>
-            <!-- 外场静养区 -->
-            <div class="standing-area">
-              <a href="#/employment/department">
-                <!-- 顶层区域话分(实现点击跳转到区域详情页) -->
-                <div class="area-style">
-                  <p>水养区</p>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div style="height: 50px;"></div>
-      </div>
-    </div>
-  </div>
+  <div></div>
+<!--  <div class="fill-container scroll-style">-->
+<!--    &lt;!&ndash; 展示图区 &ndash;&gt;-->
+<!--    <div class="graphic-container">-->
+<!--      &lt;!&ndash; 底层绘图 &ndash;&gt;-->
+<!--      <div class="underlying-background">-->
+<!--        <div style="height: 50px;"></div>-->
+<!--        &lt;!&ndash; 厂区 &ndash;&gt;-->
+<!--        <div class="factory-area">-->
+<!--          &lt;!&ndash; 钢筋笼区 &ndash;&gt;-->
+<!--          <div class="reinforcement-cage-area">-->
+<!--            <a href="#/employment/department">-->
+<!--              &lt;!&ndash; 顶层区域话分(实现点击跳转到区域详情页) &ndash;&gt;-->
+<!--              <div class="area-style">-->
+<!--                <p>钢筋笼加工区</p>-->
+<!--              </div>-->
+<!--            </a>-->
+<!--          </div>-->
+<!--          &lt;!&ndash; 生产区车间 &ndash;&gt;-->
+<!--          <div class="production-workshop">-->
+<!--            &lt;!&ndash; 生产区 &ndash;&gt;-->
+<!--            <div class="production-area">-->
+<!--              &lt;!&ndash; 实际产线区域 &ndash;&gt;-->
+<!--              <div class="operation-area">-->
+<!--                &lt;!&ndash; 横移车位 &ndash;&gt;-->
+<!--                <div class="traverse-car-area">-->
+<!--                  &lt;!&ndash; 水平分割线 &ndash;&gt;-->
+<!--                  <div class="horizontal-border"></div>-->
+<!--                  <div class="traverse-car-center">-->
+<!--                    &lt;!&ndash; 垂直分割线 &ndash;&gt;-->
+<!--                    <div class="vertical-border"></div>-->
+<!--                    &lt;!&ndash; 垂直分割线 &ndash;&gt;-->
+<!--                    <div class="vertical-border" style="left: 4px;"></div>-->
+<!--                    &lt;!&ndash; 垂直分割线 &ndash;&gt;-->
+<!--                    <div class="vertical-border" style="left: 14px;"></div>-->
+<!--                    <div class="traverse-car-core">-->
+<!--                      &lt;!&ndash; 横移小车位 &ndash;&gt;-->
+<!--                      <div class="traverse-car">-->
+<!--                        <div class="horizontal-border traverse-car-track"></div>-->
+<!--                        <div class="horizontal-border"-->
+<!--                             style="top: 13px;width: calc(100% - 10px);left: 5px;height: 3px;"></div>-->
+<!--                        <div class="horizontal-border"-->
+<!--                             style="top: 20px;width: calc(100% - 10px);left: 5px;height: 3px;"></div>-->
+<!--                        <div class="horizontal-border traverse-car-track" style="top: 32px;"></div>-->
+<!--                        <div v-for="index in 4" class="vertical-border traverse-track-sleeper"-->
+<!--                             :style="'left: calc(' + (index * 15) + '% + 5px);'" :key="index"></div>-->
+<!--                        <div v-for="index in 4" class="vertical-border traverse-track-sleeper" style="top: 20px;"-->
+<!--                             :style="'left: calc(' + (index * 15) + '% + 5px);'" :key="index"></div>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                    &lt;!&ndash; 垂直分割线 &ndash;&gt;-->
+<!--                    <div class="vertical-border" style="left: calc(100% - 15px);"></div>-->
+<!--                    &lt;!&ndash; 垂直分割线 &ndash;&gt;-->
+<!--                    <div class="vertical-border" style="left: calc(100% - 5px);"></div>-->
+<!--                    &lt;!&ndash; 垂直分割线 &ndash;&gt;-->
+<!--                    <div class="vertical-border" style="left: calc(100% - 1px);"></div>-->
+<!--                  </div>-->
+<!--                  &lt;!&ndash; 水平分割线 &ndash;&gt;-->
+<!--                  <div class="horizontal-border" style="top: 100%;"></div>-->
+<!--                </div>-->
+<!--                &lt;!&ndash; 产线区域 &ndash;&gt;-->
+<!--                <div class="production-line-area">-->
+<!--                  <div v-for="index of 3" :key="index" style="height: 20%;width: 100%;position: relative;">-->
+<!--                    &lt;!&ndash; 水平分割线 &ndash;&gt;-->
+<!--                    <div class="horizontal-border" style="height: 3px; top: 5px;"></div>-->
+<!--                    <div class="horizontal-border" style="height: 3px; top: 16px;"></div>-->
+<!--                    <div v-for="index in 100" class="vertical-border traverse-track-sleeper" style="top: 5px;"-->
+<!--                         :style="'left: calc(' + (index - 1) + '% + 3px);'" :key="index"></div>-->
+<!--                    <div v-for="index in 100" class="vertical-border traverse-track-sleeper" style="top: 24px;"-->
+<!--                         :style="'left: calc(' + (index - 1) + '% + 3px);'" :key="index"></div>-->
+<!--                    <div v-for="index of 12" :key="index" style="position: relative;">-->
+<!--                      <mould-car style="top: 2px;position: absolute;"-->
+<!--                                 :style="'left: calc(' + (index - 1) * 8.33 + '%);'"></mould-car>-->
+<!--                    </div>-->
+<!--                    &lt;!&ndash; 水平分割线 &ndash;&gt;-->
+<!--                    <div class="horizontal-border" style="height: 3px; top: 24px;"></div>-->
+<!--                    <div class="horizontal-border" style="height: 3px; top: 35px;"></div>-->
+<!--                  </div>-->
+<!--                  <div v-for="index of 2" :key="index" style="height: 20%;width: 100%;position: relative;">-->
+<!--                    <div v-for="index of 8" :key="index" style="position: relative;">-->
+<!--                      <mould-car style="top: 30px;position: absolute;"-->
+<!--                                 :style="'left: calc(' + (index - 1) * 12.5 + '%);'"-->
+<!--                                 :mould-color="mouldColor[index - 1]"></mould-car>-->
+<!--                    </div>-->
+<!--                    &lt;!&ndash; 水平分割线 &ndash;&gt;-->
+<!--                    <div class="horizontal-border" style="height: 3px; bottom: 5px;"></div>-->
+<!--                    <div class="horizontal-border" style="height: 3px; bottom: 16px;"></div>-->
+<!--                    <div v-for="index in 100" class="vertical-border traverse-track-sleeper" style="bottom: 5px;"-->
+<!--                         :style="'left: calc(' + (index - 1) + '% + 3px);'" :key="index"></div>-->
+<!--                    <div v-for="index in 100" class="vertical-border traverse-track-sleeper" style="bottom: 24px;"-->
+<!--                         :style="'left: calc(' + (index - 1) + '% + 3px);'" :key="index"></div>-->
+<!--                    &lt;!&ndash; 水平分割线 &ndash;&gt;-->
+<!--                    <div class="horizontal-border" style="height: 3px; bottom: 24px;"></div>-->
+<!--                    <div class="horizontal-border" style="height: 3px; bottom: 35px;"></div>-->
+<!--                  </div>-->
+<!--                  &lt;!&ndash; 水泥搅拌位 &ndash;&gt;-->
+<!--                  <div class="cement-mixer">-->
+<!--                    <div></div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                &lt;!&ndash; 横移车位 &ndash;&gt;-->
+<!--                <div class="traverse-car-area">-->
+<!--                  &lt;!&ndash; 水平分割线 &ndash;&gt;-->
+<!--                  <div class="horizontal-border"></div>-->
+<!--                  <div class="traverse-car-center">-->
+<!--                    &lt;!&ndash; 垂直分割线 &ndash;&gt;-->
+<!--                    <div class="vertical-border"></div>-->
+<!--                    &lt;!&ndash; 垂直分割线 &ndash;&gt;-->
+<!--                    <div class="vertical-border" style="left: 4px;"></div>-->
+<!--                    &lt;!&ndash; 垂直分割线 &ndash;&gt;-->
+<!--                    <div class="vertical-border" style="left: 14px;"></div>-->
+<!--                    <div class="traverse-car-core">-->
+<!--                      &lt;!&ndash; 横移小车位 &ndash;&gt;-->
+<!--                      <div class="traverse-car">-->
+<!--                        <div class="horizontal-border traverse-car-track"></div>-->
+<!--                        <div class="horizontal-border"-->
+<!--                             style="top: 13px;width: calc(100% - 10px);left: 5px;height: 3px;"></div>-->
+<!--                        <div class="horizontal-border"-->
+<!--                             style="top: 20px;width: calc(100% - 10px);left: 5px;height: 3px;"></div>-->
+<!--                        <div class="horizontal-border traverse-car-track" style="top: 32px;"></div>-->
+<!--                        <div v-for="index in 4" class="vertical-border traverse-track-sleeper"-->
+<!--                             :style="'left: ' + (index * 8 + 5) + 'px;'" :key="index"></div>-->
+<!--                        <div v-for="index in 4" class="vertical-border traverse-track-sleeper" style="top: 20px;"-->
+<!--                             :style="'left: ' + (index * 8 + 5) + 'px;'" :key="index"></div>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                    &lt;!&ndash; 垂直分割线 &ndash;&gt;-->
+<!--                    <div class="vertical-border" style="left: calc(100% - 15px);"></div>-->
+<!--                    &lt;!&ndash; 垂直分割线 &ndash;&gt;-->
+<!--                    <div class="vertical-border" style="left: calc(100% - 5px);"></div>-->
+<!--                    &lt;!&ndash; 垂直分割线 &ndash;&gt;-->
+<!--                    <div class="vertical-border" style="left: calc(100% - 1px);"></div>-->
+<!--                  </div>-->
+<!--                  &lt;!&ndash; 水平分割线 &ndash;&gt;-->
+<!--                  <div class="horizontal-border" style="top: 100%;"></div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              &lt;!&ndash; 过道区域 &ndash;&gt;-->
+<!--              <div class="aisle-area"></div>-->
+<!--              <a href="#/employment/department">-->
+<!--                &lt;!&ndash; 顶层区域话分(实现点击跳转到区域详情页) &ndash;&gt;-->
+<!--                <div class="area-style">-->
+<!--                  <p>生产区</p>-->
+<!--                </div>-->
+<!--              </a>-->
+<!--            </div>-->
+<!--            &lt;!&ndash; 添加标号区域 &ndash;&gt;-->
+<!--            <div class="add-key-area">-->
+<!--              <a href="#/employment/department">-->
+<!--                &lt;!&ndash; 顶层区域话分(实现点击跳转到区域详情页) &ndash;&gt;-->
+<!--                <div class="area-style">-->
+<!--                  <p>标号区</p>-->
+<!--                </div>-->
+<!--              </a>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          &lt;!&ndash; 外场区域 &ndash;&gt;-->
+<!--          <div class="outside-area">-->
+<!--            &lt;!&ndash; 外场水养区 &ndash;&gt;-->
+<!--            <div class="pool-area">-->
+<!--              <a href="#/employment/department">-->
+<!--                &lt;!&ndash; 顶层区域话分(实现点击跳转到区域详情页) &ndash;&gt;-->
+<!--                <div class="area-style">-->
+<!--                  <p>静置区</p>-->
+<!--                </div>-->
+<!--              </a>-->
+<!--            </div>-->
+<!--            &lt;!&ndash; 外场静养区 &ndash;&gt;-->
+<!--            <div class="standing-area">-->
+<!--              <a href="#/employment/department">-->
+<!--                &lt;!&ndash; 顶层区域话分(实现点击跳转到区域详情页) &ndash;&gt;-->
+<!--                <div class="area-style">-->
+<!--                  <p>水养区</p>-->
+<!--                </div>-->
+<!--              </a>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div style="height: 50px;"></div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
 </template>
 
 <script>

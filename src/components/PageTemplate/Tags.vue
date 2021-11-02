@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import bus from '@/components/Manage/bus'
+import bus from '@/components/PageTemplate/bus'
 
 export default {
   name: 'Tags',

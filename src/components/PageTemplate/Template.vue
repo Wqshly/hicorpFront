@@ -13,33 +13,31 @@
       </div>
     </div>
     <!-- 账号信息窗口 -->
-    <el-dialog ref="userInfoDialog" title="用户信息" :visible.sync="userInfoDialogVisible" :close-on-click-modal="false"
-               class="dialog-style" width="25%">
-      <el-form style="height: 350px" label-width="120px">
-        <el-form-item label="姓名："><div style="text-align: center">{{this.userInfo.name}}</div></el-form-item>
-        <el-form-item label="员工编号："><div style="text-align: center">{{this.userInfo.staffNumber}}</div></el-form-item>
-        <el-form-item label="所属部门："><div style="text-align: center">{{this.userInfo.department}}</div></el-form-item>
-        <el-form-item label="电话号码："><div style="text-align: center">{{this.userInfo.phone}}</div></el-form-item>
-        <el-form-item label="身份证号码："><div style="text-align: center">{{this.userInfo.idCard}}</div></el-form-item>
-      </el-form>
-      <div slot="footer">
-        <!-- 作为模板时，不加.native将不会生效 -->
-        <el-button @click.native="userInfoDialogVisible = false">关闭</el-button>
-      </div>
-    </el-dialog>
+<!--    <el-dialog ref="userInfoDialog" title="用户信息" :visible.sync="userInfoDialogVisible" :close-on-click-modal="false"-->
+<!--               class="dialog-style" width="25%">-->
+<!--      <el-form style="height: 350px" label-width="120px">-->
+<!--        <el-form-item label="姓名："><div style="text-align: center">{{this.userInfo.name}}</div></el-form-item>-->
+<!--        <el-form-item label="员工编号："><div style="text-align: center">{{this.userInfo.staffNumber}}</div></el-form-item>-->
+<!--        <el-form-item label="所属部门："><div style="text-align: center">{{this.userInfo.department}}</div></el-form-item>-->
+<!--        <el-form-item label="电话号码："><div style="text-align: center">{{this.userInfo.phone}}</div></el-form-item>-->
+<!--        <el-form-item label="身份证号码："><div style="text-align: center">{{this.userInfo.idCard}}</div></el-form-item>-->
+<!--      </el-form>-->
+<!--      <div slot="footer">-->
+<!--        &lt;!&ndash; 作为模板时，不加.native将不会生效 &ndash;&gt;-->
+<!--        <el-button @click.native="userInfoDialogVisible = false">关闭</el-button>-->
+<!--      </div>-->
+<!--    </el-dialog>-->
   </div>
 </template>
 
 <script>
-import ManageHeader from '@/components/Manage/ManageHeader'
-import VSidebar from '@/components/Manage/Sidebar'
-import VTags from '@/components/Manage/Tags'
-import bus from '@/components/Manage/bus'
-import Tags from './Tags'
+import ManageHeader from '@/components/PageTemplate/Header'
+import VSidebar from '@/components/PageTemplate/Sidebar'
+import VTags from '@/components/PageTemplate/Tags'
+import bus from '@/components/PageTemplate/bus'
 export default {
   name: 'ManageTemplate',
   components: {
-    Tags,
     ManageHeader,
     VSidebar,
     VTags
@@ -58,10 +56,9 @@ export default {
     }
   },
   mounted () {
-    const userInfo = JSON.parse(sessionStorage.getItem('userInfo'))
-    this.username = userInfo.username
-    this.userInfo = userInfo.principal.userInfo
-    console.log(this.userInfo)
+    // const userInfo = JSON.parse(sessionStorage.getItem('userInfo'))
+    // this.username = userInfo.username
+    // this.userInfo = userInfo.principal.userInfo
   },
   created () {
     bus.$on('collapse', msg => {
@@ -79,11 +76,11 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 
   .main-container {
     position: absolute;
-    left: 250px;
+    left: 260px;
     right: 0;
     top: 0;
     bottom: 0;

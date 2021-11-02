@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import bus from '@/components/Manage/bus'
+import bus from '@/components/PageTemplate/bus'
 
 export default {
   name: 'ManageHeader',
@@ -54,6 +54,8 @@ export default {
     // 侧边栏折叠
     collapseChange () {
       this.collapse = !this.collapse
+      console.log(this.collapse)
+      // 将折叠or展开的信息传到父组件中。
       bus.$emit('collapse', this.collapse)
     },
     // 全屏事件
