@@ -3,48 +3,54 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
+// 登录页面
 const login = () => Promise.resolve(require('@/view/Login'))
 
-// 管理员页
-const manageTemplate = () => Promise.resolve(require('@/components/PageTemplate/Template'))
-const manageHome = () => Promise.resolve(require('@/view/Home'))
+// 页面模板
+const template = () => Promise.resolve(require('@/components/PageTemplate/Template'))
 
-// 生产用人
-const department = () => Promise.resolve(require('@/view/employment/Department'))
-const workType = () => Promise.resolve(require('@/view/employment/WorkType'))
-const internalStaff = () => Promise.resolve(require('@/view/employment/InternalStaff'))
-const contractTeam = () => Promise.resolve(require('@/view/employment/ContractTeam'))
-const externalStaff = () => Promise.resolve(require('@/view/employment/ExternalStaff'))
+// 首页
+const home = () => Promise.resolve(require('@/view/Home'))
 
-// 生产空间
-const organizationSetup = () => Promise.resolve(require('@/view/production/OrganizationSetup'))
-const plantMaintenance = () => Promise.resolve(require('@/view/production/PlantMaintenance'))
-const workshop = () => Promise.resolve(require('@/view/production/Workshop'))
-const productionLine = () => Promise.resolve(require('@/view/production/ProductionLine'))
-const stationCategory = () => Promise.resolve(require('@/view/production/StationCategory'))
-const station = () => Promise.resolve(require('@/view/production/Station'))
-const warehouseCategory = () => Promise.resolve(require('@/view/production/WarehouseCategory'))
-const warehouse = () => Promise.resolve(require('@/view/production/Warehouse'))
-const warehouseLocationMaintenance = () => Promise.resolve(require('@/view/production/WarehouseLocationMaintenance'))
-const steamCuringKiln = () => Promise.resolve(require('@/view/production/SteamCuringKiln'))
-const waterPond = () => Promise.resolve(require('@/view/production/WaterPond'))
-const sensorMaintenance = () => Promise.resolve(require('@/view/production/SensorMaintenance'))
+// 权限管理
+const role = () => Promise.resolve(require('@/view/system/Role'))
+const userRoleRelation = () => Promise.resolve(require('@/view/system/UserRoleRelation'))
+const register = () => Promise.resolve(require('@/view/system/Register'))
+const userSetting = () => Promise.resolve(require('@/view/system/UserSetting'))
+const approvalProcess = () => Promise.resolve(require('@/view/system/ApprovalProcess'))
+const changePassword = () => Promise.resolve(require('@/view/system/ChangePassword'))
+const configuration = () => Promise.resolve(require('@/view/system/Configuration'))
 
-// 生产用具
-const vehicleAccount = () => Promise.resolve(require('@/view/tools/VehicleAccount'))
-const vehiclePositioningManagement = () => Promise.resolve(require('@/view/tools/VehiclePositioningManagement'))
-const moldCategory = () => Promise.resolve(require('@/view/tools/MoldCategory'))
-const mould = () => Promise.resolve(require('@/view/tools/Mould'))
-const toolCategory = () => Promise.resolve(require('@/view/tools/ToolCategory'))
-const tool = () => Promise.resolve(require('@/view/tools/Tool'))
-
-// 生产用料
-const categoryOfPurchasedMaterials = () => Promise.resolve(require('@/view/materials/CategoryOfPurchasedMaterials'))
-const steelProducts = () => Promise.resolve(require('@/view/materials/SteelProducts'))
-const concreteRawMaterials = () => Promise.resolve(require('@/view/materials/ConcreteRawMaterials'))
-const spareParts = () => Promise.resolve(require('@/view/materials/SpareParts'))
-const auxiliaryMaterials = () => Promise.resolve(require('@/view/materials/AuxiliaryMaterials'))
-const materialCodingRules = () => Promise.resolve(require('@/view/materials/MaterialCodingRules'))
+// 数据字典
+const department = () => Promise.resolve(require('@/view/data/Department'))
+const workType = () => Promise.resolve(require('@/view/data/WorkType'))
+const internalStaff = () => Promise.resolve(require('@/view/data/InternalStaff'))
+const contractTeam = () => Promise.resolve(require('@/view/data/ContractTeam'))
+const externalStaff = () => Promise.resolve(require('@/view/data/ExternalStaff'))
+const organizationSetup = () => Promise.resolve(require('@/view/data/OrganizationSetup'))
+const plantMaintenance = () => Promise.resolve(require('@/view/data/PlantMaintenance'))
+const workshop = () => Promise.resolve(require('@/view/data/Workshop'))
+const productionLine = () => Promise.resolve(require('@/view/data/ProductionLine'))
+const stationCategory = () => Promise.resolve(require('@/view/data/StationCategory'))
+const station = () => Promise.resolve(require('@/view/data/Station'))
+const warehouseCategory = () => Promise.resolve(require('@/view/data/WarehouseCategory'))
+const warehouse = () => Promise.resolve(require('@/view/data/Warehouse'))
+const warehouseLocationMaintenance = () => Promise.resolve(require('@/view/data/WarehouseLocationMaintenance'))
+const steamCuringKiln = () => Promise.resolve(require('@/view/data/SteamCuringKiln'))
+const waterPond = () => Promise.resolve(require('@/view/data/WaterPond'))
+const sensorMaintenance = () => Promise.resolve(require('@/view/data/SensorMaintenance'))
+const vehicleAccount = () => Promise.resolve(require('@/view/data/VehicleAccount'))
+const vehiclePositioningManagement = () => Promise.resolve(require('@/view/data/VehiclePositioningManagement'))
+const moldCategory = () => Promise.resolve(require('@/view/data/MoldCategory'))
+const mould = () => Promise.resolve(require('@/view/data/Mould'))
+const toolCategory = () => Promise.resolve(require('@/view/data/ToolCategory'))
+const tool = () => Promise.resolve(require('@/view/data/Tool'))
+const categoryOfPurchasedMaterials = () => Promise.resolve(require('@/view/data/CategoryOfPurchasedMaterials'))
+const steelProducts = () => Promise.resolve(require('@/view/data/SteelProducts'))
+const concreteRawMaterials = () => Promise.resolve(require('@/view/data/ConcreteRawMaterials'))
+const spareParts = () => Promise.resolve(require('@/view/data/SpareParts'))
+const auxiliaryMaterials = () => Promise.resolve(require('@/view/data/AuxiliaryMaterials'))
+const materialCodingRules = () => Promise.resolve(require('@/view/data/MaterialCodingRules'))
 
 // 设备管理
 const equipmentCategory = () => Promise.resolve(require('@/view/device/EquipmentCategory'))
@@ -55,7 +61,6 @@ const deviceUpKeep = () => Promise.resolve(require('@/view/device/DeviceUpKeep')
 const deviceRepair = () => Promise.resolve(require('@/view/device/DeviceRepair'))
 const deviceMaintenance = () => Promise.resolve(require('@/view/device/DeviceMaintenance'))
 const deviceMonitoring = () => Promise.resolve(require('@/view/device/DeviceMonitoring'))
-const vehicleCategory = () => Promise.resolve(require('@/view/device/VehicleCategory'))
 
 // 生产技术
 const homemadeCategory = () => Promise.resolve(require('@/view/technology/HomemadeCategory'))
@@ -78,11 +83,15 @@ const contractExecution = () => Promise.resolve(require('@/view/sales/ContractEx
 const orderTraceWatchBoard = () => Promise.resolve(require('@/view/sales/OrderTraceWatchBoard'))
 
 // 生产计划管理
-const complementaryRingOrder = () => Promise.resolve(require('@/view/plans/ComplementaryRingOrder'))
+const productionPlan = () => Promise.resolve(require('@/view/plans/ProductionPlan'))
+const complementaryOrderPlan = () => Promise.resolve(require('@/view/plans/ComplementaryOrderPlan'))
 const patchOrderPlan = () => Promise.resolve(require('@/view/plans/PatchOrderPlan'))
-const mrpExpansion = () => Promise.resolve(require('@/view/plans/MRPExpansion'))
-const ringCodeAuto = () => Promise.resolve(require('@/view/plans/RingCodeAuto'))
-const patchCodeAuto = () => Promise.resolve(require('@/view/plans/PatchCodeAuto'))
+const annualProductionPlan = () => Promise.resolve(require('@/view/plans/AnnualProductionPlan'))
+const quarterlyProductionPlan = () => Promise.resolve(require('@/view/plans/QuarterlyProductionPlan'))
+const monthlyProductionPlan = () => Promise.resolve(require('@/view/plans/MonthlyProductionPlan'))
+const weeklyProductionPlan = () => Promise.resolve(require('@/view/plans/WeeklyProductionPlan'))
+const dailyProductionPlan = () => Promise.resolve(require('@/view/plans/DailyProductionPlan'))
+const dailySegmentProductionPlan = () => Promise.resolve(require('@/view/plans/DailySegmentProductionPlan'))
 const pendingPatchData = () => Promise.resolve(require('@/view/plans/PendingPatchData'))
 const reinforcementCage = () => Promise.resolve(require('@/view/plans/ReinforcementCage'))
 const pouringPlan = () => Promise.resolve(require('@/view/plans/PouringPlan'))
@@ -158,16 +167,6 @@ const concreteFitRatioManage = () => Promise.resolve(require('@/view/quality/Con
 const qcReportManage = () => Promise.resolve(require('@/view/quality/QCReportManage'))
 const retrospectively = () => Promise.resolve(require('@/view/quality/Retrospectively'))
 
-// 展示页面
-const basic = () => Promise.resolve(require('@/view/core/Basic'))
-const center = () => Promise.resolve(require('@/view/core/Center'))
-const prodLine = () => Promise.resolve(require('@/view/core/ProdLine'))
-const reinforcementCageTest = () => Promise.resolve(require('@/view/core/ReinforcementCage'))
-
-// 权限管理
-const role = () => Promise.resolve(require('@/view/permission/Role'))
-const userRoleRelation = () => Promise.resolve(require('@/view/permission/UserRoleRelation'))
-
 export default new Router({
   routes: [
     {
@@ -180,224 +179,269 @@ export default new Router({
     },
     {
       path: '/',
-      component: manageTemplate,
+      component: template,
       meta: {
         schoolAdmin: true
       },
       children: [
         {
           path: '/home',
-          component: manageHome,
+          component: home,
           meta: {
             title: '首页'
           }
         },
 
-        // 部门
+        // 权限管理模块
         {
-          path: '/employment/department',
+          path: '/system/role',
+          component: role,
+          meta: {
+            title: '角色功能管理'
+          }
+        },
+        {
+          path: '/system/user-role',
+          component: userRoleRelation,
+          meta: {
+            title: '用户角色分配'
+          }
+        },
+        {
+          path: '/system/register',
+          component: register,
+          meta: {
+            title: '用户注册'
+          }
+        },
+        {
+          path: '/system/user-setting',
+          component: userSetting,
+          meta: {
+            title: '用户信息设置'
+          }
+        },
+        {
+          path: '/system/approval-process',
+          component: approvalProcess,
+          meta: {
+            title: '审批流程定义'
+          }
+        },
+        {
+          path: '/system/change-password',
+          component: changePassword,
+          meta: {
+            title: '修改密码'
+          }
+        },
+        {
+          path: '/system/configuration',
+          component: configuration,
+          meta: {
+            title: '系统配置'
+          }
+        },
+
+        // 数据字典
+        {
+          path: '/data/department',
           component: department,
           meta: {
             title: '部门管理'
           }
         },
         {
-          path: '/employment/work-type',
+          path: '/data/work-type',
           component: workType,
           meta: {
             title: '工种管理'
           }
         },
         {
-          path: '/employment/internal-staff',
+          path: '/data/internal-staff',
           component: internalStaff,
           meta: {
             title: '内部员工管理'
           }
         },
         {
-          path: '/employment/contract-team',
+          path: '/data/contract-team',
           component: contractTeam,
           meta: {
             title: '承包队管理'
           }
         },
         {
-          path: '/employment/external-staff',
+          path: '/data/external-staff',
           component: externalStaff,
           meta: {
             title: '外部员工管理'
           }
         },
-
-        // 生产空间
         {
-          path: '/production/organization-setup',
+          path: '/data/organization-setup',
           component: organizationSetup,
           meta: {
             title: '组织设置'
           }
         },
         {
-          path: '/production/plant-maintenance',
+          path: '/data/plant-maintenance',
           component: plantMaintenance,
           meta: {
             title: '工厂维护'
           }
         },
         {
-          path: '/production/workshop',
+          path: '/data/workshop',
           component: workshop,
           meta: {
             title: '车间'
           }
         },
         {
-          path: '/production/production-line',
+          path: '/data/production-line',
           component: productionLine,
           meta: {
             title: '生产线'
           }
         },
         {
-          path: '/production/station-category',
+          path: '/data/station-category',
           component: stationCategory,
           meta: {
             title: '工位类别'
           }
         },
         {
-          path: '/production/station',
+          path: '/data/station',
           component: station,
           meta: {
             title: '工位'
           }
         },
         {
-          path: '/production/warehouse-category',
+          path: '/data/warehouse-category',
           component: warehouseCategory,
           meta: {
             title: '仓库类别'
           }
         },
         {
-          path: '/production/warehouse',
+          path: '/data/warehouse',
           component: warehouse,
           meta: {
             title: '仓库'
           }
         },
         {
-          path: '/production/warehouse-location-maintenance',
+          path: '/data/warehouse-location-maintenance',
           component: warehouseLocationMaintenance,
           meta: {
             title: '仓库库位维护'
           }
         },
         {
-          path: '/production/steam-curing-kiln',
+          path: '/data/steam-curing-kiln',
           component: steamCuringKiln,
           meta: {
             title: '蒸养窑'
           }
         },
         {
-          path: '/production/water-pond',
+          path: '/data/water-pond',
           component: waterPond,
           meta: {
             title: '水养池'
           }
         },
         {
-          path: '/production/sensor-maintenance',
+          path: '/data/sensor-maintenance',
           component: sensorMaintenance,
           meta: {
             title: '传感器维护'
           }
         },
-
-        // 生产用具
         {
-          path: '/tools/vehicle-account',
+          path: '/data/vehicle-account',
           component: vehicleAccount,
           meta: {
             title: '车辆台账'
           }
         },
         {
-          path: '/tools/vehicle-positioning-management',
+          path: '/data/vehicle-positioning-management',
           component: vehiclePositioningManagement,
           meta: {
             title: '车辆定位管理'
           }
         },
         {
-          path: '/tools/mold-category',
+          path: '/data/mold-category',
           component: moldCategory,
           meta: {
             title: '模具类别'
           }
         },
         {
-          path: '/tools/mould',
+          path: '/data/mould',
           component: mould,
           meta: {
             title: '模具'
           }
         },
         {
-          path: '/tools/tool-category',
+          path: '/data/tool-category',
           component: toolCategory,
           meta: {
             title: '工具类别'
           }
         },
         {
-          path: '/tools/tool',
+          path: '/data/tool',
           component: tool,
           meta: {
             title: '工具'
           }
         },
-
-        // 生产用料
         {
-          path: '/materials/category-of-purchased-materials',
+          path: '/data/category-of-purchased-materials',
           component: categoryOfPurchasedMaterials,
           meta: {
             title: '外购物料类别'
           }
         },
         {
-          path: '/materials/steel-products',
+          path: '/data/steel-products',
           component: steelProducts,
           meta: {
             title: '钢材'
           }
         },
         {
-          path: '/materials/concrete-raw-materials',
+          path: '/data/concrete-raw-materials',
           component: concreteRawMaterials,
           meta: {
             title: '混凝土原材料'
           }
         },
         {
-          path: '/materials/spare-parts',
+          path: '/data/spare-parts',
           component: spareParts,
           meta: {
             title: '零配件'
           }
         },
         {
-          path: '/materials/auxiliary-materials',
+          path: '/data/auxiliary-materials',
           component: auxiliaryMaterials,
           meta: {
             title: '辅料辅材'
           }
         },
         {
-          path: '/materials/material-coding-rules',
+          path: '/data/material-coding-rules',
           component: materialCodingRules,
           meta: {
             title: '物料编码规则'
@@ -461,16 +505,8 @@ export default new Router({
             title: '设备运行状态物联网采集监控'
           }
         },
-        {
-          path: '/device/vehicle-category',
-          component: vehicleCategory,
-          meta: {
-            title: '车辆类别'
-          }
-        },
 
         // 生产技术
-
         {
           path: '/technology/homemade-category',
           component: homemadeCategory,
@@ -589,9 +625,16 @@ export default new Router({
         // 生产计划管理
         {
           path: '/plans/complementary-ring-order',
-          component: complementaryRingOrder,
+          component: productionPlan,
           meta: {
-            title: '补环订单编制'
+            title: '生产计划编制'
+          }
+        },
+        {
+          path: '/plans/complementary-order-plan',
+          component: complementaryOrderPlan,
+          meta: {
+            title: '补环生产计划编制'
           }
         },
         {
@@ -602,24 +645,45 @@ export default new Router({
           }
         },
         {
-          path: '/plans/mrp-expansion',
-          component: mrpExpansion,
+          path: '/plans/annual-production-plan',
+          component: annualProductionPlan,
           meta: {
-            title: '订单生产任务MRP展开'
+            title: '年度生产计划'
           }
         },
         {
-          path: '/plans/ring-code-auto',
-          component: ringCodeAuto,
+          path: '/plans/quarterly-production-plan',
+          component: quarterlyProductionPlan,
           meta: {
-            title: '环号自动生成'
+            title: '季度生产计划'
           }
         },
         {
-          path: '/plans/patch-code-auto',
-          component: patchCodeAuto,
+          path: '/plans/monthly-production-plan',
+          component: monthlyProductionPlan,
           meta: {
-            title: '管片批号自动生成'
+            title: '月度生产计划'
+          }
+        },
+        {
+          path: '/plans/weekly-production-plan',
+          component: weeklyProductionPlan,
+          meta: {
+            title: '周生产计划'
+          }
+        },
+        {
+          path: '/plans/daily-production-plan',
+          component: dailyProductionPlan,
+          meta: {
+            title: '当日生产计划'
+          }
+        },
+        {
+          path: '/plans/daily-segment-production-plan',
+          component: dailySegmentProductionPlan,
+          meta: {
+            title: '日管片生产计划编制'
           }
         },
         {
@@ -1091,52 +1155,6 @@ export default new Router({
           component: retrospectively,
           meta: {
             title: '质量追溯'
-          }
-        },
-
-        // 展示用的图表
-        {
-          path: '/core/basic',
-          component: basic,
-          meta: {
-            title: '基础图表'
-          }
-        },
-        {
-          path: '/core/center',
-          component: center,
-          meta: {
-            title: '中控图表'
-          }
-        },
-        {
-          path: '/core/prod-line',
-          component: prodLine,
-          meta: {
-            title: '产线图表'
-          }
-        },
-        {
-          path: '/core/reinforcement-cage',
-          component: reinforcementCageTest,
-          meta: {
-            title: '钢筋笼图表'
-          }
-        },
-
-        // 权限管理模块
-        {
-          path: '/permission/role',
-          component: role,
-          meta: {
-            title: '角色管理'
-          }
-        },
-        {
-          path: '/permission/user-role',
-          component: userRoleRelation,
-          meta: {
-            title: '用户角色分配'
           }
         }
       ]
