@@ -114,18 +114,18 @@ export default {
       tableHeaderList: [
         {value: 'name', label: '角色名', width: '180'},
         {value: 'createUser', label: '创建人', width: '220'},
-        {value: 'gmtCreate', label: '创建时间', width: '220'},
+        {value: 'createGmt', label: '创建时间', width: '220'},
         {value: 'modifiedUser', label: '修改人', width: '220'},
-        {value: 'gmtModified', label: '修改时间', width: '220'},
+        {value: 'modifiedGmt', label: '修改时间', width: '220'},
         {value: 'introduction', label: '具体描述', minWidth: '220'}
       ],
-      addForm: {name: '', introduction: '', gmtCreate: '', gmtModified: ''},
+      addForm: {name: '', introduction: '', createGmt: '', modifiedGmt: ''},
       addFormRules: {
         name: [
           {required: true, message: '非空验证示例!', trigger: 'blur'}
         ]
       },
-      editForm: {id: null, name: null, introduction: null, gmtCreate: null, gmtModified: null},
+      editForm: {id: null, name: null, introduction: null, createGmt: null, modifiedGmt: null},
       editFormRules: {
         name: [
           {required: true, message: '非空验证示例!', trigger: 'blur'}
@@ -176,7 +176,7 @@ export default {
     async addRecord () {
       await this.$refs.addForm.validate((valid) => {
         if (valid) {
-          this.addForm.gmtCreate = new Date()
+          this.addForm.createGmt = new Date()
           this.$refs[this.refName].createMethod(this.url.addUrl, this.addForm)
         }
       })

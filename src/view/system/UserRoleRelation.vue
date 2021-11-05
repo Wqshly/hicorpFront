@@ -76,13 +76,13 @@ export default {
         importButton: false,
         exportButton: false
       },
-      addForm: {name: '', introduction: '', gmtCreate: '', gmtModified: ''},
+      addForm: {name: '', introduction: '', createGmt: '', modifiedGmt: ''},
       addFormRules: {
         name: [
           {required: true, message: '非空验证示例!', trigger: 'blur'}
         ]
       },
-      editForm: {id: null, name: null, introduction: null, gmtCreate: null, gmtModified: null},
+      editForm: {id: null, name: null, introduction: null, createGmt: null, modifiedGmt: null},
       editFormRules: {
         name: [
           {required: true, message: '非空验证示例!', trigger: 'blur'}

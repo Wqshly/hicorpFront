@@ -71,9 +71,9 @@ export default {
         {value: 'name', label: '部门名称', width: '220'},
         {value: 'others', label: '添加信息位置', minWidth: '140'},
         {value: 'createUser', label: '创建人', width: '220'},
-        {value: 'gmtCreate', label: '创建时间', width: '220'},
+        {value: 'createGmt', label: '创建时间', width: '220'},
         {value: 'modifiedUser', label: '修改人', width: '220'},
-        {value: 'gmtModified', label: '修改时间', width: '220'}
+        {value: 'modifiedGmt', label: '修改时间', width: '220'}
       ],
       addForm: {number: '', name: ''},
       addFormRules: {},
@@ -95,7 +95,7 @@ export default {
     async addRecord () {
       await this.$refs.addForm.validate((valid) => {
         if (valid) {
-          this.addForm.gmtCreate = new Date()
+          this.addForm.createGmt = new Date()
           console.log(this.url.addUrl)
           this.$refs[this.refName].createMethod(this.url.addUrl, this.addForm)
         }

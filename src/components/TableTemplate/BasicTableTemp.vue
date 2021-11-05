@@ -602,7 +602,7 @@ export default {
       this.$emit('click-row', Object.assign({}, this.tableData[this.tableDataIndex]))
     },
     dataFormat (data, tableHeader) {
-      if (tableHeader === 'gmtCreate' || tableHeader === 'gmtModified') {
+      if (tableHeader === 'createGmt' || tableHeader === 'modifiedGmt') {
         if (data === '' || data === null) {
           return '——'
         } else {
