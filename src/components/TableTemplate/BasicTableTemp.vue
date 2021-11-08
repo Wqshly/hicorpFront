@@ -147,15 +147,16 @@
       </div>
     </el-dialog>
     <!-- 详情窗口 -->
+    <!-- 打印待重构 -->
     <el-dialog ref="detailFormDialog" title="详情" :visible.sync="detailDialogVisible" :close-on-click-modal="false"
                class="dialog-style" :width="detailDialog.width">
       <div id="printForm">
         <slot name="detailForm"></slot>
       </div>
       <div slot="footer">
-        <div style="float: left;">
-          <el-button v-print="'#printForm'" type="primary">打印</el-button>
-        </div>
+<!--        <div style="float: left;">-->
+<!--          <el-button v-print="'#printForm'" type="primary">打印</el-button>-->
+<!--        </div>-->
         <el-button @click.native="closeDetailDialog">关闭</el-button>
       </div>
     </el-dialog>

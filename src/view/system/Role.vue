@@ -34,9 +34,17 @@
         <excel-to-list @submit-json-list="getJsonList" ref="excelToList"></excel-to-list>
       </div>
       <div slot="other-dialog">
-        <el-dialog ref="roleMenuDialog" title="角色访问权限设置" :visible.sync="roleMenuDialogVisible">
-          <el-form style="overflow: auto" label-width="120px" ref="roleMenuRelation">
-            <el-form-item label="勾选菜单:" prop="menu">
+        <el-dialog ref="roleMenuDialog" title="角色访问权限设置" width="1200px" :visible.sync="roleMenuDialogVisible">
+          <el-form style="overflow: auto;" label-width="120px" ref="roleMenuRelation">
+            <el-form-item class="menu-container" label="勾选页面:" prop="menu">
+              <el-cascader-panel
+                v-model="selectMenu"
+                :options="allMenu"
+                :props="menuCascadeProps"
+                clearable></el-cascader-panel>
+            </el-form-item>
+            <el-form-item class="menu-container" style="width: 400px;" label="已选页面:" prop="menu">
+<!--              <div v-for="(item, index) in selectMenu" :key="index">{{item}}</div>-->
               <el-cascader
                 v-model="selectMenu"
                 :options="allMenu"
@@ -68,19 +76,7 @@
           </div>
         </el-dialog>
       </div>
-        <el-form slot="addForm" :model="addForm" style="overflow: auto" label-width="120px" ref="addForm"
-                 :rules="addFormRules">
-          <el-form-item label="添加示例：" prop="name">
-            <el-input v-model="addForm.name"></el-input>
-          </el-form-item>
-        </el-form>
-        <el-form slot="editForm" :model="editForm" style="overflow: auto" label-width="120px" ref="editForm"
-                 :rules="editFormRules">
-          <el-form-item label="修改示例：" prop="name">
-            <el-input v-model="editForm.name"></el-input>
-          </el-form-item>
-        </el-form>
-      </basic-table-temp>
+    </basic-table-temp>
   </div>
 </template>
 
@@ -212,8 +208,8 @@ export default {
       let flag = false
       callback(flag)
     },
-    btnClick (value, index) {
-      this.selectRoleId = this.$refs[this.refName].tableData[index].id
+    btnClick (value, row) {
+      this.selectRoleId = row.id
       if (value === 'pagePermission') {
         this.$api.http.get(this.url.findMenuIdByRoleId + this.selectRoleId)
           .then(res => {
@@ -231,12 +227,12 @@ export default {
     },
     // 更新角色的访问权限
     roleMenuUpdate () {
+      console.log(this.selectMenu)
       this.updateMenuId = []
       this.selectMenu.forEach(id => {
         this.getFathersById(id, this.allMenu)
       })
       this.updateMenuId = this.uniqueValue(this.updateMenuId).reverse()
-      console.log(this.updateMenuId)
       this.$api.http.postJson(this.url.changeRoleMenuRelation + this.selectRoleId, this.updateMenuId).then(res => {
         this.$message.success('更新成功!')
         this.roleMenuDialogVisible = false
@@ -265,7 +261,7 @@ export default {
     },
     getFathersById (id, data, prop = 'id') {
       const rev = (data, nodeId) => {
-        for (var i = 0, length = data.length; i < length; i++) {
+        for (let i = 0, length = data.length; i < length; i++) {
           const node = data[i]
           if (node[prop] === nodeId) {
             this.updateMenuId.unshift(node[prop])
@@ -297,6 +293,15 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="less">
+.menu-container .el-cascader-menu__wrap {
+  height: 410px !important;
+}
+</style>
 
+<style lang="less" scoped>
+.menu-container {
+  width: 600px;
+  float: left;
+}
 </style>

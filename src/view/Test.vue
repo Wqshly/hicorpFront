@@ -1,6 +1,7 @@
 <template>
     <div>
       <el-row>
+        test
         <el-col :span="8">
           <span>设置工作线条数：</span>
           <el-select v-model="workLineNum" placeholder="请选择" size="small">
@@ -12,8 +13,7 @@
             </el-option>
           </el-select>
         </el-col>
-        <el-col :span="8">
-          <span>设置蒸养线条数：</span>
+        <el-col :span="8"><span>设置蒸养线条数：</span>
           <el-select v-model="steamLineNum" placeholder="请选择" size="small">
             <el-option
               v-for="(item, index) in setSteamLine"
