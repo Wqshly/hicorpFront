@@ -20,27 +20,31 @@
     </vue-particles>
     <div class="container">
       <div class="form-position">
-<!--        <div style="margin: 0 auto;text-align: center;margin-bottom: -15px;">-->
+        <div style="margin: 0 auto;text-align: center;">
           <img class="logo-style" src="../assets/img/logo.png" />
-<!--        </div>-->
+        </div>
         <div class="form-container">
           <div class="form-container-border">
             <div style="margin: 10px auto;text-align: center;">
-              <p style="font-size: 36px;text-align: center">登&nbsp;&nbsp;&nbsp;录</p>
+              <p class="title">盾构管片智能制造信息管理系统</p>
             </div>
             <el-form :model="loginForm" :rules="loginFormRules" ref="loginForm"  v-show="!VRCODE">
               <el-form-item prop="username">
-                <el-input v-model="loginForm.username" placeholder="请输入员工名" clearable></el-input>
+                <el-input prefix-icon="el-icon-s-custom" v-model="loginForm.username" placeholder="请输入员工名"
+                          clearable></el-input>
               </el-form-item>
               <el-form-item prop="password">
-                <el-input type="password" v-model="loginForm.password" placeholder="请输入密码" show-password clearable></el-input>
+                <el-input prefix-icon="el-icon-edit-outline" type="password" v-model="loginForm.password"
+                          placeholder="请输入密码" show-password clearable></el-input>
               </el-form-item>
               <el-form-item style="margin-bottom: 10px;">
                 <p class="login-text-btn" style="float: left;" @click="show">扫码登录</p>
-                <p class="login-text-btn" style="float: right;" @click="setPasswordDialogVisible  = true">忘记密码？</p>
+                <p class="login-text-btn" style="float: right;" @click="setPasswordDialogVisible  = true">忘记密码</p>
               </el-form-item>
               <el-form-item>
-                <el-button style="width: 100%; float: left;" @click="login('loginForm')" :disabled="loginDisable">登录</el-button>
+                <el-button style="width: 100%; float: left;border-radius: 30px; " @click="login('loginForm')"
+                           :disabled="loginDisable">登录
+                </el-button>
               </el-form-item>
             </el-form>
             <div v-show="VRCODE">
@@ -53,14 +57,17 @@
         </div>
       </div>
     </div>
-    <el-dialog width="400px" ref="setPasswordDialog" title="密码找回" :visible.sync="setPasswordDialogVisible" :close-on-click-modal="false">
+    <el-dialog width="400px" ref="setPasswordDialog" title="密码找回" :visible.sync="setPasswordDialogVisible"
+               :close-on-click-modal="false">
       <el-form :model="setPasswordForm">
         <el-form-item>
           <el-input style="width: 360px;" v-model="setPasswordForm.phoneNumber" placeholder="请输入手机号"></el-input>
         </el-form-item>
         <el-form-item>
           <el-input style="width: 240px;" v-model="setPasswordForm.code" placeholder="请输入验证码"></el-input>
-          <el-button style="width: 115px;" :disabled="isSend" @click.native="sendMsgCode">{{isSend ? countdown + '秒后再发送' : '发送验证码'}}</el-button>
+          <el-button style="width: 115px;font-size: 15px" :disabled="isSend" @click.native="sendMsgCode">
+            {{isSend ? countdown + '秒后再发送' : '发送验证码'}}
+          </el-button>
         </el-form-item>
         <el-form-item>
           <el-input style="width: 360px;" v-model="setPasswordForm.password" type="password" placeholder="请输入新的密码"></el-input>
@@ -176,7 +183,31 @@ export default {
 }
 </script>
 
-<style type="less" scoped>
+<style lang="less" type="text/css">
+
+.form-container-border {
+  input.el-input__inner{
+    border-radius: 30px;
+    font-size: 18px;
+  }
+
+  i.el-input__icon {
+      margin-left: 10px;
+
+    }
+
+  .el-input--prefix .el-input__inner {
+  padding-left: 40px;
+  }
+}
+
+//.el-dialog{
+//  border-radius: 20px;
+//}
+
+</style>
+
+<style lang="less" type="text/css" scoped>
 
   .container {
     position: absolute;
@@ -193,7 +224,7 @@ export default {
   }
 
   .form-container {
-    background-color: white;
+    background: rgba(176,226,255,0.2);
     padding: 20px;
     border-radius: 10px;
     height: fit-content;
@@ -209,7 +240,7 @@ export default {
     position: absolute;
     height: 100%;
     width: 100%;
-    background: url(../assets/img/login/background.jpg) no-repeat;
+    background: url(../assets/img/login/background.jpeg) no-repeat;
     background-size:100% 100%;;
   }
 
@@ -228,16 +259,24 @@ export default {
   }
 
   .title {
-    font-size: 24px;
-    font-weight: 400;
+    font-family: KaiTi;
+    text-align: center;
+    color: #CAE1FF;
+    font-size: 32px;
+    font-weight: 500;
     padding-bottom: 20px;
   }
 
   .login-text-btn {
     cursor: pointer;
-    font-size: 15px;
-    color: #409eff;
+    font-size: 20px;
+    color: #ffffff;
     /*float: right;*/
+  }
+
+  .el-form-item .el-button {
+    background: #CAE1FF;
+    font-size: 22px;
   }
 
   img {
