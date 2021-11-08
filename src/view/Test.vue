@@ -1,7 +1,6 @@
 <template>
     <div>
       <el-row>
-        test
         <el-col :span="8">
           <span>设置工作线条数：</span>
           <el-select v-model="workLineNum" placeholder="请选择" size="small">
