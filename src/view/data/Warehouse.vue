@@ -39,7 +39,10 @@ export default {
         {value: 'modifiedGmt', label: '最后修改时间'}
       ],
       tableHeaderList: [
-        {value: 'address', label: '仓库地址', width: 160},
+        {value: 'name', label: '仓库名称', minWidth: 200},
+        {value: 'number', label: '仓库编号', minWidth: 200},
+        {value: 'category', label: '所属类别', minWidth: 200},
+        {value: 'categoryNumber', label: '类别编号', minWidth: 200},
         {value: 'fixed', label: '其他字段', minWidth: 200},
         {value: 'createUser', label: '创建人', width: 200},
         {value: 'createGmt', label: '创建时间', width: 200},

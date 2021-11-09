@@ -26,6 +26,10 @@ export default {
     return {
       tableSearchList: [],
       tableHeaderList: [
+        {value: 'name', label: '员工名', width: 200},
+        {value: 'number', label: '员工编号', width: 200},
+        {value: 'idCard', label: '身份证号', width: 200},
+        {value: 'teamName', label: '所属承包队', width: 200},
         {value: 'fixed', label: '其他字段', minWidth: 200},
         {value: 'createUser', label: '创建人', width: 200},
         {value: 'createGmt', label: '创建时间', width: 200},

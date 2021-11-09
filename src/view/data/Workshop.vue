@@ -26,6 +26,9 @@ export default {
     return {
       tableSearchList: [],
       tableHeaderList: [
+        {value: 'name', label: '车间名', width: 200},
+        {value: 'number', label: '车间编号', width: 200},
+        {value: 'plantName', label: '所属工厂', width: 200},
         {value: 'fixed', label: '其他字段', minWidth: 200},
         {value: 'createUser', label: '创建人', width: 200},
         {value: 'createGmt', label: '创建时间', width: 200},
