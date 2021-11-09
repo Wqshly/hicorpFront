@@ -26,6 +26,9 @@ export default {
     return {
       tableSearchList: [],
       tableHeaderList: [
+        {value: 'name', label: '传感器名称', minWidth: 200},
+        {value: 'number', label: '传感器编号', minWidth: 200},
+        {value: 'location', label: '位置信息', minWidth: 200},
         {value: 'fixed', label: '其他字段', minWidth: 200},
         {value: 'createUser', label: '创建人', width: 200},
         {value: 'createGmt', label: '创建时间', width: 200},
