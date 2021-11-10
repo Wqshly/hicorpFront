@@ -42,7 +42,7 @@
           </el-col>
           <el-col :span="24">
             <el-form-item label="电话：" prop="phoneNumber">
-              <el-input v-model="addForm.phoneNumber"></el-input>
+              <el-input oninput="value=value.replace(/[^\d]/g,'')" v-model="addForm.phoneNumber"></el-input>
             </el-form-item>
           </el-col>
         </el-row>
