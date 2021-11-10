@@ -16,22 +16,22 @@
       <el-form slot="addForm" :model="addForm" style="overflow: auto" label-width="120px" ref="addForm"
                :rules="addFormRules">
         <el-row>
-          <el-col :span="11">
+          <el-col :span="12">
             <el-form-item label="部门编号：" prop="number">
               <el-input v-model="addForm.number"></el-input>
             </el-form-item>
           </el-col>
-          <el-col :span="11">
+          <el-col :span="12">
             <el-form-item label="部门名称：" prop="name">
               <el-input v-model="addForm.name"></el-input>
             </el-form-item>
           </el-col>
-          <el-col :span="11">
+          <el-col :span="24">
             <el-form-item label="简介：" prop="description">
-              <el-input v-model="addForm.description"></el-input>
+              <el-input type="textarea" :autosize="{ minRows: 4, maxRows: 6}" v-model="addForm.description"></el-input>
             </el-form-item>
           </el-col>
-          <el-col :span="11">
+          <el-col :span="24">
             <el-form-item label="备注：" prop="remark">
               <el-input v-model="addForm.remark"></el-input>
             </el-form-item>
@@ -68,8 +68,8 @@ export default {
       refName: 'DepartmentForm',
       fileName: 'Department.xlsx',
       url: {
-        refreshUrl: '/basicCategoryData/list',
-        searchUrl: '/basicCategoryData/list',
+        refreshUrl: '/basicCategoryData/list/department',
+        searchUrl: '/basicCategoryData/list/department',
         addUrl: '/basicCategoryData/add',
         editUrl: '/basicCategoryData/',
         deleteUrl: '/basicCategoryData/deleteList',
@@ -79,7 +79,7 @@ export default {
         {value: 'number', label: '部门编号'},
         {value: 'name', label: '部门名称'},
         {value: 'description', label: '简介'},
-        {value: 'remark', label: '备注', minWidth: '220'},
+        {value: 'remark', label: '备注'},
         {value: 'createUser', label: '创建人'},
         {value: 'createGmt', label: '创建时间'},
         {value: 'modifiedUser', label: '修改人'},
@@ -95,10 +95,36 @@ export default {
         {value: 'modifiedUser', label: '修改人', width: '220'},
         {value: 'modifiedGmt', label: '修改时间', width: '220'}
       ],
-      addForm: {number: null, name: null, type: 'department', description: null, remark: null},
-      addFormRules: {},
+      addForm: {number: null, name: null, description: null, remark: null},
+      addFormRules: {
+        name: [
+          {required: true, message: '物料名称不能为空!', trigger: 'blur'}
+        ],
+        number: [
+          {required: true, message: '类别编号不能为空!', trigger: 'blur'}
+        ],
+        description: [
+          {required: true, message: '简介不能为空!', trigger: 'blur'}
+        ],
+        remark: [
+          {required: true, message: '备注不能为空!', trigger: 'blur'}
+        ]
+      },
       editForm: {id: null, number: null, name: null, description: null, remark: null},
-      editFormRules: {},
+      editFormRules: {
+        name: [
+          {required: true, message: '物料名称不能为空!', trigger: 'blur'}
+        ],
+        number: [
+          {required: true, message: '类别编号不能为空!', trigger: 'blur'}
+        ],
+        description: [
+          {required: true, message: '简介不能为空!', trigger: 'blur'}
+        ],
+        remark: [
+          {required: true, message: '备注不能为空!', trigger: 'blur'}
+        ]
+      },
       // 按钮显示控制 buttonShow: {}
       jsonList: [] // 这个用于批量导入
     }
@@ -113,6 +139,7 @@ export default {
       this.editForm = row
     },
     async addRecord () {
+      this.addForm.type = 'department'
       await this.$refs.addForm.validate((valid) => {
         if (valid) {
           this.addForm.createGmt = new Date()
@@ -123,6 +150,7 @@ export default {
       })
     },
     async editRecord () {
+      this.editForm.type = 'department'
       await this.$refs.editForm.validate((valid) => {
         if (valid) {
           this.$refs[this.refName].updateMethod(this.url.editUrl + this.editForm.id, this.editForm)
@@ -139,9 +167,9 @@ export default {
       this.addForm = {
         number: '', name: ''
       }
-      this.editForm = {
-        id: null, number: null, name: null
-      }
+      // this.editForm = {
+      //   id: null, number: null, name: null
+      // }
     },
     // 上传Excel方法
     uploadDataMethod () {
