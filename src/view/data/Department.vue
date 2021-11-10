@@ -26,6 +26,16 @@
               <el-input v-model="addForm.name"></el-input>
             </el-form-item>
           </el-col>
+          <el-col :span="11">
+            <el-form-item label="简介：" prop="description">
+              <el-input v-model="addForm.description"></el-input>
+            </el-form-item>
+          </el-col>
+          <el-col :span="11">
+            <el-form-item label="备注：" prop="remark">
+              <el-input v-model="addForm.remark"></el-input>
+            </el-form-item>
+          </el-col>
         </el-row>
       </el-form>
       <el-form slot="editForm" :model="editForm" style="overflow: auto" label-width="120px" ref="editForm"
@@ -35,6 +45,12 @@
         </el-form-item>
         <el-form-item label="部门名称：" prop="name">
           <el-input v-model="editForm.name"></el-input>
+        </el-form-item>
+        <el-form-item label="简介：" prop="description">
+          <el-input v-model="editForm.description"></el-input>
+        </el-form-item>
+        <el-form-item label="备注：" prop="remark">
+          <el-input v-model="editForm.remark"></el-input>
         </el-form-item>
       </el-form>
       <div slot="uploadDataSlot">
@@ -52,32 +68,36 @@ export default {
       refName: 'DepartmentForm',
       fileName: 'Department.xlsx',
       url: {
-        refreshUrl: '/department/list',
-        searchUrl: '/department/list',
-        addUrl: '/department/add',
-        editUrl: '/department/',
-        deleteUrl: '/department/deleteList',
-        uploadUrl: '/department/addList'
+        refreshUrl: '/basicCategoryData/list',
+        searchUrl: '/basicCategoryData/list',
+        addUrl: '/basicCategoryData/add',
+        editUrl: '/basicCategoryData/',
+        deleteUrl: '/basicCategoryData/deleteList',
+        uploadUrl: '/basicCategoryData/addList'
       },
       searchList: [
-        {value: 'name', label: '员工姓名'},
-        {value: 'staffNumber', label: '员工编号'},
-        {value: 'phoneNumber', label: '电话号码'},
-        {value: 'idCard', label: '身份证号'},
-        {value: 'sex', label: '性别'}
+        {value: 'number', label: '部门编号'},
+        {value: 'name', label: '部门名称'},
+        {value: 'description', label: '简介'},
+        {value: 'remark', label: '备注', minWidth: '220'},
+        {value: 'createUser', label: '创建人'},
+        {value: 'createGmt', label: '创建时间'},
+        {value: 'modifiedUser', label: '修改人'},
+        {value: 'modifiedGmt', label: '修改时间'}
       ],
       tableHeaderList: [
         {value: 'number', label: '部门编号', width: '220'},
         {value: 'name', label: '部门名称', width: '220'},
-        {value: 'others', label: '添加信息位置', minWidth: '140'},
+        {value: 'description', label: '简介', width: '220'},
+        {value: 'remark', label: '备注', minWidth: '220'},
         {value: 'createUser', label: '创建人', width: '220'},
         {value: 'createGmt', label: '创建时间', width: '220'},
         {value: 'modifiedUser', label: '修改人', width: '220'},
         {value: 'modifiedGmt', label: '修改时间', width: '220'}
       ],
-      addForm: {number: '', name: ''},
+      addForm: {number: null, name: null, type: 'department', description: null, remark: null},
       addFormRules: {},
-      editForm: {id: null, number: null, name: null},
+      editForm: {id: null, number: null, name: null, description: null, remark: null},
       editFormRules: {},
       // 按钮显示控制 buttonShow: {}
       jsonList: [] // 这个用于批量导入
@@ -97,6 +117,7 @@ export default {
         if (valid) {
           this.addForm.createGmt = new Date()
           console.log(this.url.addUrl)
+          console.log(this.addForm)
           this.$refs[this.refName].createMethod(this.url.addUrl, this.addForm)
         }
       })
@@ -109,6 +130,10 @@ export default {
       })
     },
     dataFormat (data, tableHeader, callback) {
+      if (tableHeader === 'sex') {
+        let status = data ? '男' : '女'
+        callback(status)
+      }
     },
     clearNewAndEditTables () {
       this.addForm = {

@@ -117,7 +117,6 @@ export default {
   methods: {
     // 点击将基本信息项的某一行信息付给编辑表
     clickRow (row) {
-      console.log(this.testName)
       this.editForm = row
     },
     btnDisabled (value, row, callback) {
@@ -156,13 +155,22 @@ export default {
     },
     dataFormat (data, tableHeader, callback) {
       if (tableHeader === 'sex') {
-        let status = '未知'
+        let a = '未知'
         if (data === true) {
-          status = '男'
+          a = '男'
         } else if (data === false) {
-          status = '女'
+          a = '女'
         }
-        callback(status)
+        callback(a)
+      }
+      if (tableHeader === 'status') {
+        let a = '未知'
+        if (data === true) {
+          a = '通过'
+        } else if (data === false) {
+          a = '拒绝'
+        }
+        callback(a)
       }
     }
   }
