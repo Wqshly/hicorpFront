@@ -45,6 +45,11 @@
               <el-input oninput="value=value.replace(/[^\d]/g,'')" v-model="addForm.phoneNumber"></el-input>
             </el-form-item>
           </el-col>
+          <el-col :span="24">
+            <el-form-item label="备注：" prop="remark">
+              <el-input v-model="addForm.remark"></el-input>
+            </el-form-item>
+          </el-col>
         </el-row>
       </el-form>
       <el-form slot="editForm" :model="editForm" style="overflow: auto" label-width="120px" ref="editForm"
@@ -66,6 +71,9 @@
         </el-form-item>
         <el-form-item label="电话：" prop="phoneNumber">
           <el-input v-model="editForm.phoneNumber"></el-input>
+        </el-form-item>
+        <el-form-item label="备注：" prop="remark">
+          <el-input v-model="editForm.remark"></el-input>
         </el-form-item>
       </el-form>
     </basic-table-temp>
@@ -92,12 +100,12 @@ export default {
       refName: 'PlantMaintenanceForm',
       fileName: 'PlantMaintenance.xlsx',
       url: {
-        refreshUrl: '/basicCategoryData/list/plantMaintenance',
-        searchUrl: '/basicCategoryData/list/plantMaintenance',
-        addUrl: '/basicCategoryData/add',
-        editUrl: '/basicCategoryData/',
-        deleteUrl: '/basicCategoryData/deleteList',
-        uploadUrl: '/basicCategoryData/addList'
+        refreshUrl: '/factory/list/plantMaintenance',
+        searchUrl: '/factory/list/plantMaintenance',
+        addUrl: '/factory/add',
+        editUrl: '/factory/',
+        deleteUrl: '/factory/deleteList',
+        uploadUrl: '/factory/addList'
       },
       searchList: [
         {value: 'name', label: '工厂名'},
@@ -106,6 +114,7 @@ export default {
         {value: 'legalPerson', label: '法人'},
         {value: 'zipCode', label: '邮编'},
         {value: 'phoneNumber', label: '电话'},
+        {value: 'remark', label: '备注'},
         {value: 'createUser', label: '创建人'},
         {value: 'createGmt', label: '创建时间'},
         {value: 'modifiedUser', label: '最后修改人'},
@@ -118,12 +127,13 @@ export default {
         {value: 'legalPerson', label: '法人', width: 200},
         {value: 'zipCode', label: '邮编', width: 200},
         {value: 'phoneNumber', label: '电话', width: 200},
+        {value: 'remark', label: '备注', width: 200},
         {value: 'createUser', label: '创建人', width: 200},
         {value: 'createGmt', label: '创建时间', width: 200},
         {value: 'modifiedUser', label: '最后修改人', width: 200},
         {value: 'modifiedGmt', label: '最后修改时间', width: 200}
       ],
-      addForm: {number: null, name: null, address: null, legalPerson: null, zipCode: null},
+      addForm: {number: null, name: null, address: null, legalPerson: null, zipCode: null, remark: null},
       addFormRules: {
         name: [
           {required: true, message: '名称不能为空!', trigger: 'blur'}
@@ -145,7 +155,7 @@ export default {
           {required: true, trigger: 'blur', validator: validPhone}
         ]
       },
-      editForm: {id: null, number: null, name: null, address: null, legalPerson: null, zipCode: null},
+      editForm: {id: null, number: null, name: null, address: null, legalPerson: null, zipCode: null, remark: null},
       editFormRules: {
         name: [
           {required: true, message: '名称不能为空!', trigger: 'blur'}
