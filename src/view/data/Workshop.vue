@@ -27,23 +27,17 @@
               <el-input v-model="addForm.name"></el-input>
             </el-form-item>
           </el-col>
-          <el-col :span="12">
-            <el-select style="width: 500px;" v-model="addForm.name"
-                       @click.native="getDeviceCategoryList()" placeholder="请选择">
-              <el-option v-for="(item,index) of deviceCategoryList"
-                         :label="item.name "
-                         :value="item.name"
-                         :key="index"></el-option>
-            </el-select>
-          </el-col>
-          <el-col :span="12">
-            <el-form-item label="工厂名称：" prop="name">
-              <el-input v-model="addForm.factoryName"></el-input>
-            </el-form-item>
-          </el-col>
-          <el-col :span="12">
-            <el-form-item label="工厂编号：" prop="name">
-              <el-input v-model="addForm.factoryNumber"></el-input>
+          <el-col :span="24">
+            <el-form-item label="所属工厂：" prop="factoryName">
+              <el-input v-model="addForm.factoryName" placeholder="输入工厂名或在前面选择工厂编号">
+                <el-select slot="prepend" style="width: 200px;" v-model="addForm.factoryInfo"
+                           @click.native="getFactoryList()" @change="setFactoryInfo()" placeholder="请选择工厂编号">
+                  <el-option v-for="(item,index) of factoryList"
+                             :label="item.number"
+                             :value="item"
+                             :key="index"></el-option>
+                </el-select>
+              </el-input>
             </el-form-item>
           </el-col>
           <el-col :span="12">
@@ -119,7 +113,14 @@ export default {
         {value: 'modifiedUser', label: '最后修改人', width: 200},
         {value: 'modifiedGmt', label: '最后修改时间', width: 200}
       ],
-      addForm: {number: null, name: null, factoryName: null, factoryNumber: null, chargePerson: null},
+      addForm: {
+        number: null,
+        name: null,
+        factoryInfo: null,
+        factoryName: null,
+        factoryNumber: null,
+        chargePerson: null
+      },
       addFormRules: {
         name: [
           {required: true, message: '名称不能为空!', trigger: 'blur'}
@@ -154,7 +155,8 @@ export default {
         chargePerson: [
           {required: true, message: '负责人不能为空!', trigger: 'blur'}
         ]
-      }
+      },
+      factoryList: []
     }
   },
   // 这个用于批量导入，使用批量导入功能记得复制过去。
@@ -199,6 +201,7 @@ export default {
       //   id: null, number: null, name: null
       // }
     },
+    // 批量导入时下面三个方法，一起复制。
     // 上传Excel方法
     uploadDataMethod () {
       if (this.jsonList.length > 0) {
@@ -218,8 +221,17 @@ export default {
         this.jsonList[i].number = data[0][i]['车间编号']
         this.jsonList[i].name = data[0][i]['车间名称']
       }
+    },
+    getFactoryList () {
+      this.$api.http.get('/factory/list')
+        .then(res => {
+          this.factoryList = res.data
+        })
+    },
+    setFactoryInfo () {
+      this.addForm.factoryName = this.addForm.factoryInfo.name
+      this.addForm.factoryNumber = this.addForm.factoryInfo.number
     }
-    // 批量导入时上面三个方法，一起复制。
   }
 }
 </script>
