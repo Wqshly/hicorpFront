@@ -28,7 +28,7 @@
             </el-col>
             <el-col :span="24">
               <el-form-item label="性别：" prop="sex">
-                <el-radio-group v-model="editForm.sex">
+                <el-radio-group v-model="addForm.sex">
                   <el-radio :label="1">男</el-radio>
                   <el-radio :label="2">女</el-radio>
                 </el-radio-group>
@@ -53,21 +53,41 @@
         </el-form>
         <el-form slot="editForm" :model="editForm" style="overflow: auto" label-width="120px" ref="editForm"
                  :rules="editFormRules">
-          <el-form-item label="员工姓名：" prop="number">
-            <el-input v-model="editForm.number"></el-input>
-          </el-form-item>
-          <el-form-item label="员工编号：" prop="number">
-            <el-input v-model="editForm.number"></el-input>
-          </el-form-item>
-          <el-form-item label="性别：" prop="sex">
-            <!--            <el-input v-model="editForm.sex"></el-input>-->
-          </el-form-item>
-          <el-form-item label="身份证号：" prop="idCard">
-            <el-input v-model="editForm.idCard"></el-input>
-          </el-form-item>
-          <el-form-item label="所属承包队：" prop="teamName">
-            <el-input v-model="editForm.teamName"></el-input>
-          </el-form-item>
+          <el-row>
+            <el-col :span="12">
+              <el-form-item label="员工姓名：" prop="name">
+                <el-input v-model="editForm.name"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="员工编号：" prop="number">
+                <el-input v-model="editForm.number"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="24">
+              <el-form-item label="性别：" prop="sex">
+                <el-radio-group v-model="editForm.sex">
+                  <el-radio :label="1">男</el-radio>
+                  <el-radio :label="2">女</el-radio>
+                </el-radio-group>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="年龄：" prop="age">
+                <el-input v-model="editForm.age"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="24">
+              <el-form-item label="身份证号：" prop="idCard">
+                <el-input v-model="editForm.idCard"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="所属承包队：" prop="teamName">
+                <el-input v-model="editForm.teamName"></el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
         </el-form>
       </basic-table-temp>
     </div>
