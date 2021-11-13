@@ -34,11 +34,6 @@
                 </el-radio-group>
               </el-form-item>
             </el-col>
-            <el-col :span="12">
-              <el-form-item label="年龄：" prop="age">
-                <el-input v-model="addForm.age"></el-input>
-              </el-form-item>
-            </el-col>
             <el-col :span="24">
               <el-form-item label="身份证号：" prop="idCard">
                 <el-input v-model="addForm.idCard"></el-input>
@@ -70,11 +65,6 @@
                   <el-radio :label="1">男</el-radio>
                   <el-radio :label="2">女</el-radio>
                 </el-radio-group>
-              </el-form-item>
-            </el-col>
-            <el-col :span="12">
-              <el-form-item label="年龄：" prop="age">
-                <el-input v-model="editForm.age"></el-input>
               </el-form-item>
             </el-col>
             <el-col :span="24">
