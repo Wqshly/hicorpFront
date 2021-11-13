@@ -35,19 +35,19 @@
 <!--                <el-input v-model="addForm.sex"></el-input>-->
               </el-form-item>
             </el-col>
-            <el-col :span="12">
-              <el-form-item label="年龄：" prop="age">
-                <el-input v-model="addForm.age"></el-input>
-              </el-form-item>
-            </el-col>
             <el-col :span="24">
               <el-form-item label="身份证号：" prop="idCard">
-              <el-input v-model="addForm.idCard"></el-input>
+                <el-input oninput="value=value.replace(/[^\d]/g,'')" v-model="addForm.idCard"></el-input>
               </el-form-item>
             </el-col>
             <el-col :span="12">
-              <el-form-item label="工龄：" prop="age">
-                <el-input v-model="addForm.age"></el-input>
+              <el-form-item label="入职时间：" prop="workYear">
+<!--                <el-input oninput="value=value.replace(/[^\d]/g,'')" v-model="addForm.wordYear"></el-input>-->
+                <el-date-picker
+                  v-model="addForm.wordYear"
+                  type="date"
+                  placeholder="选择日期">
+                </el-date-picker>
               </el-form-item>
             </el-col>
           </el-row>
@@ -75,6 +75,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'InternalStaff',
   data () {
@@ -93,9 +94,8 @@ export default {
         {value: 'name', label: '员工姓名'},
         {value: 'number', label: '员工编号'},
         {value: 'sex', label: '性别'},
-        {value: 'age', label: '年龄'},
         {value: 'idCard', label: '身份证号'},
-        {value: 'wordYear', label: '工龄'},
+        {value: 'wordYear', label: '入职时间'},
         {value: 'createUser', label: '创建人'},
         {value: 'createGmt', label: '创建时间'},
         {value: 'modifiedUser', label: '最后修改人'},
@@ -105,15 +105,14 @@ export default {
         {value: 'name', label: '员工姓名', width: 200},
         {value: 'number', label: '员工编号', width: 200},
         {value: 'sex', label: '性别', width: 200},
-        {value: 'age', label: '年龄', width: 200},
         {value: 'idCard', label: '身份证号', width: 200},
-        {value: 'wordYear', label: '工龄', width: 200},
+        {value: 'wordYear', label: '入职时间', width: 200},
         {value: 'createUser', label: '创建人', width: 200},
         {value: 'createGmt', label: '创建时间', width: 200},
         {value: 'modifiedUser', label: '最后修改人', width: 200},
         {value: 'modifiedGmt', label: '最后修改时间', width: 200}
       ],
-      addForm: {name: null, number: null, sex: null, age: null, idCard: null, wordYear: null},
+      addForm: {name: null, number: null, sex: null, idCard: null, wordYear: null},
       addFormRules: {
         name: [
           {required: true, message: '员工名不能为空!', trigger: 'blur'}
@@ -124,17 +123,14 @@ export default {
         sex: [
           {required: true, message: '请选择性别！', trigger: 'blur'}
         ],
-        age: [
-          {required: true, message: '年龄不能为空!', trigger: 'blur'}
-        ],
         idCard: [
           {required: true, message: '身份证号不能为空!', trigger: 'blur'}
         ],
         wordYear: [
-          {required: true, message: '工龄不能为空!', trigger: 'blur'}
+          {required: true, message: '入职时间不能为空!', trigger: 'blur'}
         ]
       },
-      editForm: {id: null, name: null, number: null, sex: null, age: null, idCard: null, wordYear: null},
+      editForm: {name: null, number: null, sex: null, idCard: null, wordYear: null},
       editFormRules: {
         name: [
           {required: true, message: '员工名不能为空!', trigger: 'blur'}
@@ -145,14 +141,11 @@ export default {
         sex: [
           {required: true, message: '性别不能为空!', trigger: 'blur'}
         ],
-        age: [
-          {required: true, message: '年龄不能为空!', trigger: 'blur'}
-        ],
         idCard: [
           {required: true, message: '身份证号不能为空!', trigger: 'blur'}
         ],
         wordYear: [
-          {required: true, message: '工龄不能为空!', trigger: 'blur'}
+          {required: true, message: '入职时间不能为空!', trigger: 'blur'}
         ]
       }
     }
@@ -193,7 +186,11 @@ export default {
     },
     clearNewAndEditTables () {
       this.addForm = {
-        number: '', name: ''
+        name: null,
+        number: null,
+        sex: null,
+        idCard: null,
+        wordYear: null
       }
       // this.editForm = {
       //   id: null, number: null, name: null

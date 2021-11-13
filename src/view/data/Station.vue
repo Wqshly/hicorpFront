@@ -1,19 +1,68 @@
 <template>
     <div>
-      <basic-table-temp
-        :search-list="tableSearchList"
-        :table-header-list="tableHeaderList">
+      <basic-table-temp :ref="refName"
+                        :url="url"
+                        :search-list="searchList"
+                        :table-header-list="tableHeaderList"
+                        :file-name="fileName"
+                        @click-row="clickRow"
+                        @add-record="addRecord"
+                        @edit-record="editRecord"
+                        @data-format="dataFormat"
+                        @upload-data="uploadDataMethod"
+                        @cancel-export-data="cancelExportData"
+                        @clear-new-and-edit-tables="clearNewAndEditTables"
+
+      >
         <el-form slot="addForm" :model="addForm" style="overflow: auto" label-width="120px" ref="addForm"
                  :rules="addFormRules">
-          <el-form-item label="添加示例：" prop="name">
-            <el-input v-model="addForm.name"></el-input>
-          </el-form-item>
+          <el-row>
+            <el-col :span="12">
+              <el-form-item label="工位名称：" prop="name">
+                <el-input v-model="addForm.name"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="所属类别：" prop="name">
+                <el-input v-model="addForm.category"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="类别编号：" prop="number">
+                <el-input v-model="addForm.categoryNumber"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="24">
+              <el-form-item label="备注：" prop="remark">
+                <el-input v-model="addForm.remark"></el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
         </el-form>
         <el-form slot="editForm" :model="editForm" style="overflow: auto" label-width="120px" ref="editForm"
                  :rules="editFormRules">
-          <el-form-item label="修改示例：" prop="name">
-            <el-input v-model="editForm.name"></el-input>
-          </el-form-item>
+          <el-row>
+            <el-col :span="12">
+              <el-form-item label="工位名称：" prop="name">
+                <el-input v-model="editForm.name"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="所属类别：" prop="name">
+                <el-input v-model="editForm.category"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="类别编号：" prop="number">
+                <el-input v-model="editForm.categoryNumber"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="24">
+              <el-form-item label="备注：" prop="remark">
+                <el-input v-model="editFor.remark"></el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
         </el-form>
       </basic-table-temp>
     </div>

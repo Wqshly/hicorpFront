@@ -165,7 +165,10 @@ export default {
     },
     clearNewAndEditTables () {
       this.addForm = {
-        number: '', name: ''
+        number: null,
+        name: null,
+        description: null,
+        remark: null
       }
       // this.editForm = {
       //   id: null, number: null, name: null

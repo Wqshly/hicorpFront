@@ -76,8 +76,8 @@ export default {
         uploadUrl: '/basicCategoryData/addList'
       },
       searchList: [
-        {value: 'number', label: '类别编号'},
         {value: 'name', label: '模具名称'},
+        {value: 'number', label: '类别编号'},
         {value: 'description', label: '简介'},
         {value: 'remark', label: '备注'},
         {value: 'createUser', label: '创建人'},
@@ -165,7 +165,10 @@ export default {
     },
     clearNewAndEditTables () {
       this.addForm = {
-        number: '', name: ''
+        number: null,
+        name: null,
+        description: null,
+        remark: null
       }
       // this.editForm = {
       //   id: null, number: null, name: null
