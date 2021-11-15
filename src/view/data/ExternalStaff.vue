@@ -45,14 +45,16 @@
               </el-form-item>
             </el-col>
             <el-col :span="24">
-              <el-form-item label="所属承包队：" prop="teamName">
-                  <el-select style="width: 200px;" v-model="addForm.contractTeamName"
-                             @click.native="getContractTeamList()" @change="setContractTeamInfo()" placeholder="请选择承包队编号">
+              <el-form-item label="所属承包队：" prop="contractTeamName">
+                <el-input v-model="addForm.contractTeamNumber" placeholder="在前面选择承包队编号">
+                  <el-select slot="prepend" style="width: 200px;" v-model="addForm.contractTeamInfo"
+                             @click.native="getContractTeamList()" @change="setContractTeamInfo()" placeholder="请选择承包队名">
                     <el-option v-for="(item,index) of contractTeamList"
-                               :label="item.number"
+                               :label="item.name"
                                :value="item"
                                :key="index"></el-option>
                   </el-select>
+                </el-input>
               </el-form-item>
             </el-col>
           </el-row>
@@ -122,7 +124,8 @@ export default {
         {value: 'sex', label: '性别'},
         {value: 'idCard', label: '身份证号'},
         {value: 'phoneNumber', label: '手机号'},
-        {value: 'teamName', label: '所属承包队'},
+        {value: 'contractTeamName', label: '所属承包队'},
+        {value: 'contractTeamNumber', label: '承包队编号'},
         {value: 'createUser', label: '创建人'},
         {value: 'createGmt', label: '创建时间'},
         {value: 'modifiedUser', label: '最后修改人'},
@@ -134,7 +137,8 @@ export default {
         {value: 'sex', label: '性别', width: 200},
         {value: 'idCard', label: '身份证号', width: 200},
         {value: 'phoneNumber', label: '手机号', width: 200},
-        {value: 'teamName', label: '所属承包队', width: 200},
+        {value: 'contractTeamName', label: '所属承包队', width: 200},
+        {value: 'contractTeamNumber', label: '承包队编号', width: 200},
         {value: 'createUser', label: '创建人', width: 200},
         {value: 'createGmt', label: '创建时间', width: 200},
         {value: 'modifiedUser', label: '最后修改人', width: 200},
@@ -147,8 +151,8 @@ export default {
         idCard: null,
         phoneNumber: null,
         contractTeamInfo: null,
-        teamName: null,
-        teamNumber: null
+        contractTeamName: null,
+        contractTeamNumber: null
       },
       addFormRules: {
         name: [
@@ -166,7 +170,7 @@ export default {
         phoneNumber: [
           {required: true, trigger: 'blur', validator: validPhone}
         ],
-        teamName: [
+        contractTeamName: [
           {required: true, message: '所属承包队不能为空!', trigger: 'blur'}
         ]
       },

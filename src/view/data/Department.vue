@@ -68,12 +68,12 @@ export default {
       refName: 'DepartmentForm',
       fileName: 'Department.xlsx',
       url: {
-        refreshUrl: '/department/list/department',
-        searchUrl: '/department/list/department',
-        addUrl: '/department/add',
-        editUrl: '/department/',
-        deleteUrl: '/department/deleteList',
-        uploadUrl: '/department/addList'
+        refreshUrl: '/basicCategoryData/list/department',
+        searchUrl: '/basicCategoryData/list/department',
+        addUrl: '/basicCategoryData/add',
+        editUrl: '/basicCategoryData/',
+        deleteUrl: '/basicCategoryData/deleteList',
+        uploadUrl: '/basicCategoryData/addList'
       },
       searchList: [
         {value: 'number', label: '部门编号'},

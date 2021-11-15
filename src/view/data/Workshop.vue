@@ -29,11 +29,11 @@
           </el-col>
           <el-col :span="24">
             <el-form-item label="所属工厂：" prop="factoryName">
-              <el-input v-model="addForm.factoryName" placeholder="输入工厂名或在前面选择工厂编号">
+              <el-input v-model="addForm.factoryNumber" placeholder="输入工厂名或在前面选择工厂编号">
                 <el-select slot="prepend" style="width: 200px;" v-model="addForm.factoryInfo"
                            @click.native="getFactoryList()" @change="setFactoryInfo()" placeholder="请选择工厂编号">
                   <el-option v-for="(item,index) of factoryList"
-                             :label="item.number"
+                             :label="item.name"
                              :value="item"
                              :key="index"></el-option>
                 </el-select>
