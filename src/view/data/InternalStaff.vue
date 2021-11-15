@@ -81,7 +81,6 @@
             </el-col>
             <el-col :span="12">
               <el-form-item label="入职时间：" prop="workYear">
-                <!--                <el-input oninput="value=value.replace(/[^\d]/g,'')" v-model="addForm.wordYear"></el-input>-->
                 <el-date-picker
                   v-model="editForm.wordYear"
                   type="date"

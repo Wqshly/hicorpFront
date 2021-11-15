@@ -26,7 +26,8 @@
             <el-form-item label="车间名称：" prop="name">
               <el-input v-model="addForm.name"></el-input>
             </el-form-item>
-
+          </el-col>
+          <el-col :span="24">
             <el-form-item label="所属工厂：" prop="factoryName">
               <el-input v-model="addForm.factoryName" placeholder="输入工厂名或在前面选择工厂编号">
                 <el-select slot="prepend" style="width: 200px;" v-model="addForm.factoryInfo"

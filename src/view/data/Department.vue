@@ -68,12 +68,12 @@ export default {
       refName: 'DepartmentForm',
       fileName: 'Department.xlsx',
       url: {
-        refreshUrl: '/basicCategoryData/list/department',
-        searchUrl: '/basicCategoryData/list/department',
-        addUrl: '/basicCategoryData/add',
-        editUrl: '/basicCategoryData/',
-        deleteUrl: '/basicCategoryData/deleteList',
-        uploadUrl: '/basicCategoryData/addList'
+        refreshUrl: '/department/list/department',
+        searchUrl: '/department/list/department',
+        addUrl: '/department/add',
+        editUrl: '/department/',
+        deleteUrl: '/department/deleteList',
+        uploadUrl: '/department/addList'
       },
       searchList: [
         {value: 'number', label: '部门编号'},
@@ -98,10 +98,10 @@ export default {
       addForm: {number: null, name: null, description: null, remark: null},
       addFormRules: {
         name: [
-          {required: true, message: '物料名称不能为空!', trigger: 'blur'}
+          {required: true, message: '部门名称不能为空!', trigger: 'blur'}
         ],
         number: [
-          {required: true, message: '类别编号不能为空!', trigger: 'blur'}
+          {required: true, message: '部门编号不能为空!', trigger: 'blur'}
         ],
         description: [
           {required: true, message: '简介不能为空!', trigger: 'blur'}
@@ -113,10 +113,10 @@ export default {
       editForm: {id: null, number: null, name: null, description: null, remark: null},
       editFormRules: {
         name: [
-          {required: true, message: '物料名称不能为空!', trigger: 'blur'}
+          {required: true, message: '部门名称不能为空!', trigger: 'blur'}
         ],
         number: [
-          {required: true, message: '类别编号不能为空!', trigger: 'blur'}
+          {required: true, message: '部门编号不能为空!', trigger: 'blur'}
         ],
         description: [
           {required: true, message: '简介不能为空!', trigger: 'blur'}

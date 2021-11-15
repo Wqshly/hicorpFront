@@ -27,6 +27,11 @@
               </el-form-item>
             </el-col>
             <el-col :span="24">
+              <el-form-item label="身份证号：" prop="idCard">
+                <el-input oninput="value=value.replace(/[^\d]/g,'')" v-model="addForm.idCard"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
               <el-form-item label="性别：" prop="sex">
                 <el-radio-group v-model="addForm.sex">
                   <el-radio :label="1">男</el-radio>
@@ -34,14 +39,20 @@
                 </el-radio-group>
               </el-form-item>
             </el-col>
-            <el-col :span="24">
-              <el-form-item label="身份证号：" prop="idCard">
-                <el-input v-model="addForm.idCard"></el-input>
+            <el-col :span="12">
+              <el-form-item label="手机号：" prop="phoneNumber">
+                <el-input oninput="value=value.replace(/[^\d]/g,'')" v-model="addForm.phoneNumber"></el-input>
               </el-form-item>
             </el-col>
-            <el-col :span="12">
+            <el-col :span="24">
               <el-form-item label="所属承包队：" prop="teamName">
-                <el-input v-model="addForm.teamName"></el-input>
+                  <el-select style="width: 200px;" v-model="addForm.contractTeamName"
+                             @click.native="getContractTeamList()" @change="setContractTeamInfo()" placeholder="请选择承包队编号">
+                    <el-option v-for="(item,index) of contractTeamList"
+                               :label="item.number"
+                               :value="item"
+                               :key="index"></el-option>
+                  </el-select>
               </el-form-item>
             </el-col>
           </el-row>
@@ -60,6 +71,11 @@
               </el-form-item>
             </el-col>
             <el-col :span="24">
+              <el-form-item label="身份证号：" prop="idCard">
+                <el-input oninput="value=value.replace(/[^\d]/g,'')" v-model="editForm.idCard"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
               <el-form-item label="性别：" prop="sex">
                 <el-radio-group v-model="editForm.sex">
                   <el-radio :label="1">男</el-radio>
@@ -67,9 +83,9 @@
                 </el-radio-group>
               </el-form-item>
             </el-col>
-            <el-col :span="24">
-              <el-form-item label="身份证号：" prop="idCard">
-                <el-input v-model="editForm.idCard"></el-input>
+            <el-col :span="12">
+              <el-form-item label="手机号：" prop="phoneNumber">
+                <el-input oninput="value=value.replace(/[^\d]/g,'')" v-model="editForm.phoneNumber"></el-input>
               </el-form-item>
             </el-col>
             <el-col :span="12">
@@ -84,6 +100,8 @@
 </template>
 
 <script>
+import {validPhone} from '@/commons/validPhone'
+
 export default {
   name: 'ExternalStaff',
   data () {
@@ -102,8 +120,8 @@ export default {
         {value: 'name', label: '员工姓名'},
         {value: 'number', label: '员工编号'},
         {value: 'sex', label: '性别'},
-        {value: 'age', label: '年龄'},
         {value: 'idCard', label: '身份证号'},
+        {value: 'phoneNumber', label: '手机号'},
         {value: 'teamName', label: '所属承包队'},
         {value: 'createUser', label: '创建人'},
         {value: 'createGmt', label: '创建时间'},
@@ -114,15 +132,24 @@ export default {
         {value: 'name', label: '员工姓名', width: 200},
         {value: 'number', label: '员工编号', width: 200},
         {value: 'sex', label: '性别', width: 200},
-        {value: 'age', label: '年龄', width: 200},
         {value: 'idCard', label: '身份证号', width: 200},
+        {value: 'phoneNumber', label: '手机号', width: 200},
         {value: 'teamName', label: '所属承包队', width: 200},
         {value: 'createUser', label: '创建人', width: 200},
         {value: 'createGmt', label: '创建时间', width: 200},
         {value: 'modifiedUser', label: '最后修改人', width: 200},
         {value: 'modifiedGmt', label: '最后修改时间', width: 200}
       ],
-      addForm: {},
+      addForm: {
+        name: null,
+        number: null,
+        sex: null,
+        idCard: null,
+        phoneNumber: null,
+        contractTeamInfo: null,
+        teamName: null,
+        teamNumber: null
+      },
       addFormRules: {
         name: [
           {required: true, message: '员工名不能为空!', trigger: 'blur'}
@@ -133,17 +160,17 @@ export default {
         sex: [
           {required: true, message: '请选择性别!', trigger: 'blur'}
         ],
-        age: [
-          {required: true, message: '年龄不能为空!', trigger: 'blur'}
-        ],
         idCard: [
           {required: true, message: '身份证号不能为空!', trigger: 'blur'}
+        ],
+        phoneNumber: [
+          {required: true, trigger: 'blur', validator: validPhone}
         ],
         teamName: [
           {required: true, message: '所属承包队不能为空!', trigger: 'blur'}
         ]
       },
-      editForm: {},
+      editForm: {id: null, name: null, number: null, sex: null, idCard: null, teamName: null},
       editFormRules: {
         name: [
           {required: true, message: '员工名不能为空!', trigger: 'blur'}
@@ -154,16 +181,14 @@ export default {
         sex: [
           {required: true, message: '请选择性别!', trigger: 'blur'}
         ],
-        age: [
-          {required: true, message: '年龄不能为空!', trigger: 'blur'}
-        ],
         idCard: [
           {required: true, message: '身份证号不能为空!', trigger: 'blur'}
         ],
         teamName: [
           {required: true, message: '所属承包队不能为空!', trigger: 'blur'}
         ]
-      }
+      },
+      contractTeamList: []
     }
   },
   // 这个用于批量导入，使用批量导入功能记得复制过去。
@@ -176,7 +201,7 @@ export default {
       this.editForm = row
     },
     async addRecord () {
-      this.addForm.type = 'department'
+      this.addForm.type = 'externalStaff'
       await this.$refs.addForm.validate((valid) => {
         if (valid) {
           this.addForm.createGmt = new Date()
@@ -187,7 +212,7 @@ export default {
       })
     },
     async editRecord () {
-      this.editForm.type = 'department'
+      this.editForm.type = 'externalStaff'
       await this.$refs.editForm.validate((valid) => {
         if (valid) {
           this.$refs[this.refName].updateMethod(this.url.editUrl + this.editForm.id, this.editForm)
@@ -202,7 +227,11 @@ export default {
     },
     clearNewAndEditTables () {
       this.addForm = {
-        number: '', name: ''
+        name: null,
+        number: null,
+        sex: null,
+        idCard: null,
+        teamName: null
       }
       // this.editForm = {
       //   id: null, number: null, name: null
@@ -227,8 +256,17 @@ export default {
         this.jsonList[i].number = data[0][i]['部门编号']
         this.jsonList[i].name = data[0][i]['部门名称']
       }
+    },
+    getContractTeamList () {
+      this.$api.http.get('/contractTeam/list')
+        .then(res => {
+          this.contractTeamList = res.data
+        })
+    },
+    setContractTeamInfo () {
+      this.addForm.contractTeamName = this.addForm.contractTeamInfo.name
+      this.addForm.contractTeamNumber = this.addForm.contractTeamInfo.number
     }
-    // 批量导入时上面三个方法，一起复制。
   }
 }
 </script>
