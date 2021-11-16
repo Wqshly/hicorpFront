@@ -24,24 +24,64 @@ export default {
   name: 'Equipment',
   data () {
     return {
-      tableSearchList: [],
+      refName: 'EquipmentForm',
+      fileName: 'Equipment.xlsx',
+      url: {
+        refreshUrl: '/basicCategoryData/list/equipment',
+        searchUrl: '/basicCategoryData/list/equipment',
+        addUrl: '/basicCategoryData/add',
+        editUrl: '/basicCategoryData/',
+        deleteUrl: '/basicCategoryData/deleteList',
+        uploadUrl: '/basicCategoryData/addList'
+      },
+      searchList: [
+        {value: 'name', label: '设备名称'},
+        {value: 'number', label: '设备编号'},
+        {value: 'category', label: '所属类别'},
+        {value: 'categoryNumber', label: '类别编号'},
+        {value: 'createUser', label: '创建人'},
+        {value: 'createGmt', label: '创建时间'},
+        {value: 'modifiedUser', label: '最后修改人'},
+        {value: 'modifiedGmt', label: '最后修改时间'}
+      ],
       tableHeaderList: [
-        {value: 'fixed', label: '其他字段', minWidth: 200},
+        {value: 'name', label: '设备名称', width: 200},
+        {value: 'number', label: '设备编号', width: 200},
+        {value: 'category', label: '所属类别', width: 200},
+        {value: 'categoryNumber', label: '类别编号', minWidth: 200},
         {value: 'createUser', label: '创建人', width: 200},
         {value: 'createGmt', label: '创建时间', width: 200},
         {value: 'modifiedUser', label: '最后修改人', width: 200},
         {value: 'modifiedGmt', label: '最后修改时间', width: 200}
       ],
-      addForm: {},
+      addForm: {name: null, number: null, category: null, categoryNumber: null},
       addFormRules: {
         name: [
-          {required: true, message: '非空验证示例!', trigger: 'blur'}
+          {required: true, message: '设备名称不能为空!', trigger: 'blur'}
+        ],
+        number: [
+          {required: true, message: '设备编号不能为空!', trigger: 'blur'}
+        ],
+        category: [
+          {required: true, message: '所属类别不能为空!', trigger: 'blur'}
+        ],
+        categoryNumber: [
+          {required: true, message: '类别编号不能为空!', trigger: 'blur'}
         ]
       },
       editForm: {},
       editFormRules: {
         name: [
-          {required: true, message: '非空验证示例!', trigger: 'blur'}
+          {required: true, message: '设备名称不能为空!', trigger: 'blur'}
+        ],
+        number: [
+          {required: true, message: '设备编号不能为空!', trigger: 'blur'}
+        ],
+        category: [
+          {required: true, message: '所属类别不能为空!', trigger: 'blur'}
+        ],
+        categoryNumber: [
+          {required: true, message: '类别编号不能为空!', trigger: 'blur'}
         ]
       }
     }

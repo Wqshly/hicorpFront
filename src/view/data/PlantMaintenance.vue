@@ -161,7 +161,8 @@ export default {
           {required: true, message: '法人不能为空!', trigger: 'blur'}
         ],
         zipCode: [
-          {required: true, message: '邮编不能为空!', min: 6, trigger: 'blur'}
+          {required: true, message: '邮编不能为空!', trigger: 'blur'},
+          {min: 6, max: 6, message: '邮编不正确!', trigger: 'blur'}
         ],
         phoneNumber: [
           {required: true, trigger: 'blur', validator: validPhone}

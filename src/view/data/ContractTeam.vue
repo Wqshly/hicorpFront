@@ -32,19 +32,46 @@
                 <el-input  v-model="addForm.chargePerson"></el-input>
               </el-form-item>
             </el-col>
+            <el-col :span="12">
+              <el-form-item label="联系电话：" prop="phoneNumber">
+                <el-input oninput="value=value.replace(/[^\d]/g,'')" v-model="addForm.phoneNumber"></el-input>
+              </el-form-item>
+            </el-col>
           </el-row>
         </el-form>
         <el-form slot="editForm" :model="editForm" style="overflow: auto" label-width="120px" ref="editForm"
                  :rules="editFormRules">
-          <el-form-item label="修改示例：" prop="name">
-            <el-input v-model="editForm.name"></el-input>
-          </el-form-item>
+          <el-row>
+            <el-col :span="12">
+              <el-form-item label="承包队名：" prop="name">
+                <el-input v-model="editForm.name"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="承包队编号：" prop="number">
+                <el-input v-model="editForm.number"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="负责人：" prop="chargePerson">
+                <el-input  v-model="editForm.chargePerson"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="联系电话：" prop="phoneNumber">
+                <el-input oninput="value=value.replace(/[^\d]/g,'')" v-model="editForm.phoneNumber"></el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
         </el-form>
       </basic-table-temp>
     </div>
 </template>
 
 <script>
+
+import {validPhone} from '@/commons/validPhone'
+
 export default {
   name: 'ContractTeam',
   data () {
@@ -63,6 +90,7 @@ export default {
         {value: 'name', label: '承包队名'},
         {value: 'number', label: '承包队编号'},
         {value: 'chargePerson', label: '负责人'},
+        {value: 'phoneNumber', label: '联系电话'},
         {value: 'createUser', label: '创建人'},
         {value: 'createGmt', label: '创建时间'},
         {value: 'modifiedUser', label: '最后修改人'},
@@ -72,12 +100,13 @@ export default {
         {value: 'name', label: '承包队名', width: 200},
         {value: 'number', label: '承包队编号', width: 200},
         {value: 'chargePerson', label: '负责人', width: 200},
+        {value: 'phoneNumber', label: '联系电话', width: 200},
         {value: 'createUser', label: '创建人', width: 200},
         {value: 'createGmt', label: '创建时间', width: 200},
         {value: 'modifiedUser', label: '最后修改人', width: 200},
         {value: 'modifiedGmt', label: '最后修改时间', width: 200}
       ],
-      addForm: {number: null, name: null, chargePerson: null},
+      addForm: {number: null, name: null, chargePerson: null, phoneNumber: null},
       addFormRules: {
         name: [
           {required: true, message: '承包队名不能为空!', trigger: 'blur'}
@@ -87,9 +116,12 @@ export default {
         ],
         chargePerson: [
           {required: true, message: '负责人不能为空!', trigger: 'blur'}
+        ],
+        phoneNumber: [
+          {required: true, trigger: 'blur', validator: validPhone}
         ]
       },
-      editForm: {id: null, number: null, name: null, chargePerson: null},
+      editForm: {id: null, number: null, name: null, chargePerson: null, phoneNumber: null},
       editFormRules: {
         name: [
           {required: true, message: '承包队名不能为空!', trigger: 'blur'}
@@ -99,6 +131,9 @@ export default {
         ],
         chargePerson: [
           {required: true, message: '负责人不能为空!', trigger: 'blur'}
+        ],
+        phoneNumber: [
+          {required: true, trigger: 'blur', validator: validPhone}
         ]
       }
     }
@@ -141,8 +176,8 @@ export default {
       this.addForm = {
         number: null,
         name: null,
-        description: null,
-        remark: null
+        chargePerson: null,
+        phoneNumber: null
       }
       // this.editForm = {
       //   id: null, number: null, name: null
