@@ -22,7 +22,7 @@
               </el-form-item>
             </el-col>
             <el-col :span="12">
-              <el-form-item label="类别编号：" prop="name">
+              <el-form-item label="类别编号：" prop="number">
                 <el-input v-model="addForm.number"></el-input>
               </el-form-item>
             </el-col>
