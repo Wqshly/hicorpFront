@@ -17,18 +17,33 @@
                  :rules="addFormRules">
           <el-row>
             <el-col :span="12">
-              <el-form-item label="类别编号：" prop="number">
+              <el-form-item label="类别名称：" prop="name">
+                <el-input v-model="addForm.name"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="类别编号：" prop="name">
                 <el-input v-model="addForm.number"></el-input>
               </el-form-item>
             </el-col>
             <el-col :span="12">
-              <el-form-item label="设备名称：" prop="name">
-                <el-input v-model="addForm.name"></el-input>
+              <el-form-item label="品牌：" prop="brand">
+                <el-input v-model="addForm.brand"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="规格型号：" prop="specificationModel">
+                <el-input v-model="addForm.specificationModel"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="（计量）单位：" prop="unit">
+                <el-input v-model="addForm.unit"></el-input>
               </el-form-item>
             </el-col>
             <el-col :span="24">
-              <el-form-item label="备注：" prop="remark">
-                <el-input v-model="addForm.remark"></el-input>
+              <el-form-item label="备注：" prop="remarks">
+                <el-input v-model="addForm.remarks"></el-input>
               </el-form-item>
             </el-col>
           </el-row>
@@ -37,18 +52,33 @@
                  :rules="editFormRules">
           <el-row>
             <el-col :span="12">
-              <el-form-item label="类别编号：" prop="number">
+              <el-form-item label="类别名称：" prop="name">
+                <el-input v-model="editForm.name"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="类别编号：" prop="name">
                 <el-input v-model="editForm.number"></el-input>
               </el-form-item>
             </el-col>
             <el-col :span="12">
-              <el-form-item label="设备名称：" prop="name">
-                <el-input v-model="editForm.name"></el-input>
+              <el-form-item label="品牌：" prop="brand">
+                <el-input v-model="editForm.brand"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="规格型号：" prop="specificationModel">
+                <el-input v-model="editForm.specificationModel"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="（计量）单位：" prop="unit">
+                <el-input v-model="editForm.unit"></el-input>
               </el-form-item>
             </el-col>
             <el-col :span="24">
-              <el-form-item label="备注：" prop="remark">
-                <el-input v-model="editForm.remark"></el-input>
+              <el-form-item label="备注：" prop="remarks">
+                <el-input v-model="editForm.remarks"></el-input>
               </el-form-item>
             </el-col>
           </el-row>
@@ -65,46 +95,77 @@ export default {
       refName: 'EquipmentCategoryForm',
       fileName: 'EquipmentCategory.xlsx',
       url: {
-        refreshUrl: '/basicCategoryData/list/equipmentCategory',
-        searchUrl: '/basicCategoryData/list/equipmentCategory',
-        addUrl: '/basicCategoryData/add',
-        editUrl: '/basicCategoryData/',
-        deleteUrl: '/basicCategoryData/deleteList',
-        uploadUrl: '/basicCategoryData/addList'
+        refreshUrl: '/deviceCategory/list/equipmentCategory',
+        searchUrl: '/deviceCategory/list/equipmentCategory',
+        addUrl: '/deviceCategory/add',
+        editUrl: '/deviceCategory/',
+        deleteUrl: '/deviceCategory/deleteList',
+        uploadUrl: '/deviceCategory/addList'
       },
       searchList: [
-        {value: 'name', label: '设备名称'},
+        {value: 'name', label: '类别名称'},
         {value: 'number', label: '类别编号'},
+        {value: 'brand', label: '品牌'},
+        {value: 'specificationModel', label: '规格型号'},
+        {value: 'unit', label: '（计量）单位'},
+        {value: 'remarks', label: '备注'},
         {value: 'createUser', label: '创建人'},
         {value: 'createGmt', label: '创建时间'},
         {value: 'modifiedUser', label: '最后修改人'},
         {value: 'modifiedGmt', label: '最后修改时间'}
       ],
       tableHeaderList: [
-        {value: 'name', label: '设备名称', width: 200},
+        {value: 'name', label: '类别名称', width: 200},
         {value: 'number', label: '类别编号', width: 200},
-        {value: 'remark', label: '备注', width: 200},
+        {value: 'brand', label: '品牌', width: 200},
+        {value: 'specificationModel', label: '规格型号', minwidth: 200},
+        {value: 'unit', label: '（计量）单位', width: 200},
+        {value: 'remarks', label: '备注', width: 200},
         {value: 'createUser', label: '创建人', width: 200},
-        {value: 'createGmt', label: '创建时间', width: 200},
+        {value: 'createGmt', label: '创建时间', width: 220},
         {value: 'modifiedUser', label: '最后修改人', width: 200},
         {value: 'modifiedGmt', label: '最后修改时间', width: 200}
       ],
-      addForm: {number: null, name: null, remark: null},
+      addForm: {name: null, number: null, brand: null, specificationModel: null, unit: null, remarkss: null},
       addFormRules: {
         name: [
-          {required: true, message: '设备名称不能为空!', trigger: 'blur'}
+          {required: true, message: '类别名称不能为空!', trigger: 'blur'}
         ],
         number: [
           {required: true, message: '类别编号不能为空!', trigger: 'blur'}
+        ],
+        brand: [
+          {required: true, message: '品牌不能为空!', trigger: 'blur'}
+        ],
+        specificationModel: [
+          {required: true, message: '规格型号不能为空!', trigger: 'blur'}
+        ],
+        unit: [
+          {required: true, message: '（计量）单位不能为空!', trigger: 'blur'}
+        ],
+        remarkss: [
+          {required: true, message: '备注不能为空!', trigger: 'blur'}
         ]
       },
-      editForm: {number: null, name: null, remark: null},
+      editForm: {id: null, name: null, number: null, brand: null, specificationModel: null, unit: null, remarkss: null},
       editFormRules: {
         name: [
-          {required: true, message: '设备名称不能为空!', trigger: 'blur'}
+          {required: true, message: '类别名称不能为空!', trigger: 'blur'}
         ],
         number: [
           {required: true, message: '类别编号不能为空!', trigger: 'blur'}
+        ],
+        brand: [
+          {required: true, message: '品牌不能为空!', trigger: 'blur'}
+        ],
+        specificationModel: [
+          {required: true, message: '规格型号不能为空!', trigger: 'blur'}
+        ],
+        unit: [
+          {required: true, message: '（计量）单位不能为空!', trigger: 'blur'}
+        ],
+        remarks: [
+          {required: true, message: '备注不能为空!', trigger: 'blur'}
         ]
       }
     }
@@ -148,7 +209,7 @@ export default {
         number: null,
         name: null,
         description: null,
-        remark: null
+        remarks: null
       }
       // this.editForm = {
       //   id: null, number: null, name: null

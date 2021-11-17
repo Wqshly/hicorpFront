@@ -18,41 +18,119 @@
                  :rules="addFormRules">
           <el-row>
             <el-col :span="12">
-              <el-form-item label="模具名称：" prop="name">
-                <el-input v-model="addForm.name"></el-input>
+              <el-form-item label="基础编码：" prop="baseNumber">
+                <el-input v-model="addForm.baseNumber"></el-input>
               </el-form-item>
             </el-col>
             <el-col :span="12">
-              <el-form-item label="模具编号：" prop="number">
+              <el-form-item label="模具编码：" prop="number">
                 <el-input v-model="addForm.number"></el-input>
               </el-form-item>
             </el-col>
             <el-col :span="12">
-              <el-form-item label="所属类别：" prop="category">
-                <el-input v-model="addForm.category"></el-input>
+              <el-form-item label="类别编号：" prop="typeNumber">
+                <el-input v-model="addForm.typeNumber"></el-input>
               </el-form-item>
             </el-col>
             <el-col :span="12">
-              <el-form-item label="类别编号：" prop="categoryNumber">
-                <el-input v-model="addForm.categoryNumber"></el-input>
+              <el-form-item label="类别名称：" prop="typeName">
+                <el-input v-model="addForm.typeName"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="24">
+              <el-form-item label="RFID标签识别号：" prop="rfidNumber">
+                <el-input v-model="addForm.rfidNumber"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="生产厂家：" prop="manufacturer">
+                <el-input v-model="addForm.manufacturer"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="规格、尺寸：" prop="specificationSize">
+                <el-input v-model="addForm.specificationSize"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="单位(规格)：" prop="unit">
+                <el-input v-model="addForm.unit"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="累计使用次数：" prop="cumulativeUsageTimes">
+                <el-input v-model="addForm.cumulativeUsageTimes"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="入厂时间：" prop="incomingTime">
+                <el-date-picker
+                  v-model="addForm.incomingTime"
+                  type="date"
+                  placeholder="选择日期">
+                </el-date-picker>
               </el-form-item>
             </el-col>
           </el-row>
         </el-form>
         <el-form slot="editForm" :model="editForm" style="overflow: auto" label-width="120px" ref="editForm"
                  :rules="editFormRules">
-          <el-form-item label="模具名称：" prop="name">
-            <el-input v-model="editForm.name"></el-input>
-          </el-form-item>
-          <el-form-item label="模具编号：" prop="number">
-            <el-input v-model="editForm.number"></el-input>
-          </el-form-item>
-          <el-form-item label="所属类别：" prop="category">
-            <el-input v-model="editForm.category"></el-input>
-          </el-form-item>
-          <el-form-item label="类别编号：" prop="categoryNumber">
-            <el-input v-model="editForm.categoryNumber"></el-input>
-          </el-form-item>
+          <el-row>
+            <el-col :span="12">
+              <el-form-item label="基础编码：" prop="baseNumber">
+                <el-input v-model="editForm.baseNumber"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="模具编码：" prop="number">
+                <el-input v-model="editForm.number"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="类别编号：" prop="typeNumber">
+                <el-input v-model="editForm.typeNumber"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="类别名称：" prop="typeName">
+                <el-input v-model="editForm.typeName"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="24">
+              <el-form-item label="RFID标签识别号：" prop="rfidNumber">
+                <el-input v-model="editForm.rfidNumber"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="生产厂家：" prop="manufacturer">
+                <el-input v-model="editForm.manufacturer"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="规格、尺寸：" prop="specificationSize">
+                <el-input v-model="editForm.specificationSize"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="单位(规格)：" prop="unit">
+                <el-input v-model="editForm.unit"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="累计使用次数：" prop="cumulativeUsageTimes">
+                <el-input v-model="editForm.cumulativeUsageTimes"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="入厂时间：" prop="incomingTime">
+                <el-date-picker
+                  v-model="editForm.incomingTime"
+                  type="date"
+                  placeholder="选择日期">
+                </el-date-picker>
+              </el-form-item>
+            </el-col>
+          </el-row>
         </el-form>
       </basic-table-temp>
     </div>
@@ -66,63 +144,109 @@ export default {
       refName: 'MouldForm',
       fileName: 'Mould.xlsx',
       url: {
-        refreshUrl: '/basicCategoryData/list/mould',
-        searchUrl: '/basicCategoryData/list/mould',
-        addUrl: '/basicCategoryData/add',
-        editUrl: '/basicCategoryData/',
-        deleteUrl: '/basicCategoryData/deleteList',
-        uploadUrl: '/basicCategoryData/addList'
+        refreshUrl: '/mould/list/mould',
+        searchUrl: '/mould/list/mould',
+        addUrl: '/mould/add',
+        editUrl: '/mould/',
+        deleteUrl: '/mould/deleteList',
+        uploadUrl: '/mould/addList'
       },
       searchList: [
-        {value: 'name', label: '模具名称'},
+        {value: 'baseNumber', label: '基础编码'},
         {value: 'number', label: '模具编号'},
-        {value: 'category', label: '所属类别'},
-        {value: 'categoryNumber', label: '类别编号'},
-        {value: 'description', label: '简介'},
-        {value: 'remark', label: '备注'},
+        {value: 'typeNumber', label: '模具类别编号'},
+        {value: 'typeName', label: '模具类别名称'},
+        {value: 'rfidNumber', label: 'RFID标签识别号'},
+        {value: 'manufacturer', label: '生产厂家'},
+        {value: 'specificationSize', label: '规格、尺寸'},
+        {value: 'unit', label: '单位(规格)'},
+        {value: 'cumulativeUsageTimes', label: '累计使用次数'},
+        {value: 'incomingTime', label: '入厂时间'},
         {value: 'createUser', label: '创建人'},
         {value: 'createGmt', label: '创建时间'},
         {value: 'modifiedUser', label: '修改人'},
         {value: 'modifiedGmt', label: '修改时间'}
       ],
       tableHeaderList: [
-        {value: 'name', label: '模具名称', width: 200},
+        {value: 'baseNumber', label: '基础编码', width: 200},
         {value: 'number', label: '模具编号', width: 200},
-        {value: 'category', label: '所属类别', width: 200},
-        {value: 'categoryNumber', label: '类别编号', width: 200},
+        {value: 'typeNumber', label: '模具类别编号', width: 200},
+        {value: 'typeName', label: '模具类别名称', width: 200},
+        {value: 'rfidNumber', label: 'RFID标签识别号', width: 200},
+        {value: 'manufacturer', label: '生产厂家', width: 200},
+        {value: 'specificationSize', label: '规格、尺寸', width: 200},
+        {value: 'unit', label: '单位(规格)', width: 200},
+        {value: 'cumulativeUsageTimes', label: '累计使用次数', width: 200},
+        {value: 'incomingTime', label: '入厂时间', width: 200},
         {value: 'createUser', label: '创建人', width: 200},
         {value: 'createGmt', label: '创建时间', width: 200},
         {value: 'modifiedUser', label: '最后修改人', width: 200},
         {value: 'modifiedGmt', label: '最后修改时间', width: 200}
       ],
-      addForm: {number: null, name: null, category: null, categoryNumber: null},
+      addForm: {baseNumber: null, number: null, typeNumber: null, typeName: null, rfidNumber: null, manufacturer: null, specificationSize: null, unit: null, cumulativeUsageTimes: null, incomingTime: null},
       addFormRules: {
-        name: [
-          {required: true, message: '模具名称不能为空!', trigger: 'blur'}
+        baseNumber: [
+          {required: true, message: '基础编码不能为空!', trigger: 'blur'}
         ],
         number: [
           {required: true, message: '模具编号不能为空!', trigger: 'blur'}
         ],
-        category: [
-          {required: true, message: '所属类别不能为空!', trigger: 'blur'}
+        typeNumber: [
+          {required: true, message: '模具类别编号不能为空!', trigger: 'blur'}
         ],
-        categoryNumber: [
-          {required: true, message: '类别编号不能为空!', trigger: 'blur'}
+        typeName: [
+          {required: true, message: '模具类别名称不能为空!', trigger: 'blur'}
+        ],
+        rfidNumber: [
+          {required: true, message: 'RFID标签识别号不能为空!', trigger: 'blur'}
+        ],
+        manufacturer: [
+          {required: true, message: '生产厂家不能为空!', trigger: 'blur'}
+        ],
+        specificationSize: [
+          {required: true, message: '规格、尺寸不能为空!', trigger: 'blur'}
+        ],
+        unit: [
+          {required: true, message: '单位(规格)不能为空!', trigger: 'blur'}
+        ],
+        cumulativeUsageTimes: [
+          {required: true, message: '累计使用次数不能为空!', trigger: 'blur'}
+        ],
+        incomingTime: [
+          {required: true, message: '入厂时间不能为空!', trigger: 'blur'}
         ]
       },
-      editForm: {id: null, number: null, name: null, category: null, categoryNumber: null},
+      editForm: {id: null, baseNumber: null, number: null, typeNumber: null, typeName: null, rfidNumber: null, manufacturer: null, specificationSize: null, unit: null, cumulativeUsageTimes: null, incomingTime: null},
       editFormRules: {
-        name: [
-          {required: true, message: '模具名称不能为空!', trigger: 'blur'}
+        baseNumber: [
+          {required: true, message: '基础编码不能为空!', trigger: 'blur'}
         ],
         number: [
           {required: true, message: '模具编号不能为空!', trigger: 'blur'}
         ],
-        category: [
-          {required: true, message: '所属类别不能为空!', trigger: 'blur'}
+        typeNumber: [
+          {required: true, message: '模具类别编号不能为空!', trigger: 'blur'}
         ],
-        categoryNumber: [
-          {required: true, message: '类别编号不能为空!', trigger: 'blur'}
+        typeName: [
+          {required: true, message: '模具类别名称不能为空!', trigger: 'blur'}
+        ],
+        rfidNumber: [
+          {required: true, message: 'RFID标签识别号不能为空!', trigger: 'blur'}
+        ],
+        manufacturer: [
+          {required: true, message: '生产厂家不能为空!', trigger: 'blur'}
+        ],
+        specificationSize: [
+          {required: true, message: '规格、尺寸不能为空!', trigger: 'blur'}
+        ],
+        unit: [
+          {required: true, message: '单位(规格)不能为空!', trigger: 'blur'}
+        ],
+        cumulativeUsageTimes: [
+          {required: true, message: '累计使用次数不能为空!', trigger: 'blur'}
+        ],
+        incomingTime: [
+          {required: true, message: '入厂时间不能为空!', trigger: 'blur'}
         ]
       }
     }
@@ -165,7 +289,7 @@ export default {
         number: null,
         name: null,
         category: null,
-        categoryNumber: null
+        typeNumber: null
       }
       // this.editForm = {
       //   id: null, number: null, name: null
