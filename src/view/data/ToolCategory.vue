@@ -87,7 +87,6 @@ export default {
         {value: 'number', label: '类别编号', width: 200},
         {value: 'description', label: '简介', width: 200},
         {value: 'remark', label: '备注', minWidth: 200},
-        {value: 'fixed', label: '其他字段', minWidth: 200},
         {value: 'createUser', label: '创建人', width: 200},
         {value: 'createGmt', label: '创建时间', width: 200},
         {value: 'modifiedUser', label: '最后修改人', width: 200},
@@ -182,8 +181,10 @@ export default {
       for (let i = 0; i < data[0].length; i++) {
         // 存入字段名和excel表中的名称的映射，记得修改
         this.jsonList[i] = {}
-        this.jsonList[i].number = data[0][i]['类别编号']
         this.jsonList[i].name = data[0][i]['工具名称']
+        this.jsonList[i].number = data[0][i]['类别编号']
+        this.jsonList[i].description = data[0][i]['简介']
+        this.jsonList[i].remark = data[0][i]['备注']
       }
     }
     // 批量导入时上面三个方法，一起复制。

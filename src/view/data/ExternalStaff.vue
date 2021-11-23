@@ -257,8 +257,12 @@ export default {
       for (let i = 0; i < data[0].length; i++) {
         // 存入字段名和excel表中的名称的映射，记得修改
         this.jsonList[i] = {}
-        this.jsonList[i].number = data[0][i]['部门编号']
-        this.jsonList[i].name = data[0][i]['部门名称']
+        this.jsonList[i].name = data[0][i]['员工姓名']
+        this.jsonList[i].number = data[0][i]['员工编号']
+        this.jsonList[i].sex = data[0][i]['性别']
+        this.jsonList[i].idCard = data[0][i]['身份证号']
+        this.jsonList[i].contractTeamName = data[0][i]['所属承包队']
+        this.jsonList[i].contractTeamNumber = data[0][i]['承包队编号']
       }
     },
     getContractTeamList () {

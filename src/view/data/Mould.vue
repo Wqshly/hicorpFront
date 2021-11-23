@@ -27,14 +27,17 @@
                 <el-input v-model="addForm.number"></el-input>
               </el-form-item>
             </el-col>
-            <el-col :span="12">
-              <el-form-item label="类别编号：" prop="typeNumber">
-                <el-input v-model="addForm.typeNumber"></el-input>
-              </el-form-item>
-            </el-col>
-            <el-col :span="12">
-              <el-form-item label="类别名称：" prop="typeName">
-                <el-input v-model="addForm.typeName"></el-input>
+            <el-col :span="24">
+              <el-form-item label="所属类别：" prop="typeName">
+                <el-input v-model="addForm.typeNumber" placeholder="输入类别名编号">
+                  <el-select slot="prepend" style="width: 200px;" v-model="addForm.mouldCategoryInfo"
+                             @click.native="getMouldCategoryList()" @change="setMouldCategoryInfo()" placeholder="请选择类别名">
+                    <el-option v-for="(item,index) of mouldCategoryList"
+                               :label="item.name"
+                               :value="item"
+                               :key="index"></el-option>
+                  </el-select>
+                </el-input>
               </el-form-item>
             </el-col>
             <el-col :span="24">
@@ -183,7 +186,18 @@ export default {
         {value: 'modifiedUser', label: '最后修改人', width: 200},
         {value: 'modifiedGmt', label: '最后修改时间', width: 200}
       ],
-      addForm: {baseNumber: null, number: null, typeNumber: null, typeName: null, rfidNumber: null, manufacturer: null, specificationSize: null, unit: null, cumulativeUsageTimes: null, incomingTime: null},
+      addForm: {
+        mouldCategoryInfo: null,
+        baseNumber: null,
+        number: null,
+        typeNumber: null,
+        typeName: null,
+        rfidNumber: null,
+        manufacturer: null,
+        specificationSize: null,
+        unit: null,
+        cumulativeUsageTimes: null,
+        incomingTime: null},
       addFormRules: {
         baseNumber: [
           {required: true, message: '基础编码不能为空!', trigger: 'blur'}
@@ -216,7 +230,17 @@ export default {
           {required: true, message: '入厂时间不能为空!', trigger: 'blur'}
         ]
       },
-      editForm: {id: null, baseNumber: null, number: null, typeNumber: null, typeName: null, rfidNumber: null, manufacturer: null, specificationSize: null, unit: null, cumulativeUsageTimes: null, incomingTime: null},
+      editForm: {id: null,
+        baseNumber: null,
+        number: null,
+        typeNumber: null,
+        typeName: null,
+        rfidNumber: null,
+        manufacturer: null,
+        specificationSize: null,
+        unit: null,
+        cumulativeUsageTimes: null,
+        incomingTime: null},
       editFormRules: {
         baseNumber: [
           {required: true, message: '基础编码不能为空!', trigger: 'blur'}
@@ -248,7 +272,8 @@ export default {
         incomingTime: [
           {required: true, message: '入厂时间不能为空!', trigger: 'blur'}
         ]
-      }
+      },
+      mouldCategoryList: []
     }
   },
   mounted () {
@@ -311,11 +336,28 @@ export default {
       for (let i = 0; i < data[0].length; i++) {
         // 存入字段名和excel表中的名称的映射，记得修改
         this.jsonList[i] = {}
-        this.jsonList[i].number = data[0][i]['部门编号']
-        this.jsonList[i].name = data[0][i]['部门名称']
+        this.jsonList[i].baseNumber = data[0][i]['基础编码']
+        this.jsonList[i].number = data[0][i]['模具编号']
+        this.jsonList[i].typeNumber = data[0][i]['模具类别编号']
+        this.jsonList[i].typeName = data[0][i]['模具类别名称']
+        this.jsonList[i].rfidNumber = data[0][i]['标签识别号']
+        this.jsonList[i].manufacturer = data[0][i]['生产厂家']
+        this.jsonList[i].specificationSize = data[0][i]['规格、尺寸']
+        this.jsonList[i].unit = data[0][i]['单位(规格)']
+        this.jsonList[i].cumulativeUsageTimes = data[0][i]['累计使用次数']
+        this.jsonList[i].incomingTime = data[0][i]['入厂时间']
       }
+    },
+    getMouldCategoryList () {
+      this.$api.http.get('/basicCategoryData/list')
+        .then(res => {
+          this.mouldCategoryList = res.data
+        })
+    },
+    setMouldCategoryInfo () {
+      this.addForm.mouldCategoryName = this.addForm.mouldCategoryInfo.name
+      this.addForm.mouldCategoryNumber = this.addForm.mouldCategoryInfo.number
     }
-    // 批量导入时上面三个方法，一起复制。
   }
 }
 </script>

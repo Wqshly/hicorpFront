@@ -24,26 +24,48 @@ export default {
   name: 'WorkType',
   data () {
     return {
-      tableSearchList: [],
+      refName: 'WorkTypeForm',
+      fileName: 'WorkType.xlsx',
+      url: {
+        refreshUrl: '/basicCategoryData/list/workType',
+        searchUrl: '/basicCategoryData/list/workType',
+        addUrl: '/basicCategoryData/add',
+        editUrl: '/basicCategoryData/',
+        deleteUrl: '/basicCategoryData/deleteList',
+        uploadUrl: '/basicCategoryData/addList'
+      },
+      searchList: [
+        {value: 'name', label: '工种名'},
+        {value: 'required', label: '工种要求'},
+        {value: 'createUser', label: '创建人'},
+        {value: 'createGmt', label: '创建时间'},
+        {value: 'modifiedUser', label: '最后修改人'},
+        {value: 'modifiedGmt', label: '最后修改时间'}
+      ],
       tableHeaderList: [
         {value: 'name', label: '工种名', width: 200},
         {value: 'required', label: '工种要求', width: 200},
-        {value: 'fixed', label: '其他字段', minWidth: 200},
         {value: 'createUser', label: '创建人', width: 200},
         {value: 'createGmt', label: '创建时间', width: 200},
         {value: 'modifiedUser', label: '最后修改人', width: 200},
         {value: 'modifiedGmt', label: '最后修改时间', width: 200}
       ],
-      addForm: {},
+      addForm: {name: null, required: null},
       addFormRules: {
         name: [
-          {required: true, message: '非空验证示例!', trigger: 'blur'}
+          {required: true, message: '工种名不能为空!', trigger: 'blur'}
+        ],
+        required: [
+          {required: true, message: '工种要求不能为空!', trigger: 'blur'}
         ]
       },
-      editForm: {},
+      editForm: {name: null, required: null},
       editFormRules: {
         name: [
-          {required: true, message: '非空验证示例!', trigger: 'blur'}
+          {required: true, message: '工种名不能为空!', trigger: 'blur'}
+        ],
+        required: [
+          {required: true, message: '工种要求不能为空!', trigger: 'blur'}
         ]
       }
     }

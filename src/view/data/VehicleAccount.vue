@@ -30,7 +30,6 @@ export default {
         {value: 'vehicleNumber', label: '车牌号', width: 200},
         {value: 'driverName', label: '驾驶员姓名', width: 200},
         {value: 'driverIdNumber', label: '驾驶员身份证号', width: 200},
-        {value: 'fixed', label: '其他字段', minWidth: 200},
         {value: 'createUser', label: '创建人', width: 200},
         {value: 'createGmt', label: '创建时间', width: 200},
         {value: 'modifiedUser', label: '最后修改人', width: 200},

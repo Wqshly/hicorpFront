@@ -218,8 +218,11 @@ export default {
       for (let i = 0; i < data[0].length; i++) {
         // 存入字段名和excel表中的名称的映射，记得修改
         this.jsonList[i] = {}
+        this.jsonList[i].name = data[0][i]['车间名']
         this.jsonList[i].number = data[0][i]['车间编号']
-        this.jsonList[i].name = data[0][i]['车间名称']
+        this.jsonList[i].factoryName = data[0][i][' 所属工厂']
+        this.jsonList[i].factoryNumber = data[0][i]['工厂编号']
+        this.jsonList[i].chargePerson = data[0][i]['负责人']
       }
     },
     getFactoryList () {

@@ -28,7 +28,6 @@ export default {
       tableHeaderList: [
         {value: 'name', label: '水养池名称', minWidth: 200},
         {value: 'number', label: '水养池编号', minWidth: 200},
-        {value: 'fixed', label: '其他字段', minWidth: 200},
         {value: 'createUser', label: '创建人', width: 200},
         {value: 'createGmt', label: '创建时间', width: 200},
         {value: 'modifiedUser', label: '最后修改人', width: 200},

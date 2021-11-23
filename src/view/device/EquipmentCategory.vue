@@ -107,7 +107,7 @@ export default {
         {value: 'number', label: '类别编号'},
         {value: 'brand', label: '品牌'},
         {value: 'specificationModel', label: '规格型号'},
-        {value: 'unit', label: '（计量）单位'},
+        {value: 'unit', label: '(计量)单位'},
         {value: 'remarks', label: '备注'},
         {value: 'createUser', label: '创建人'},
         {value: 'createGmt', label: '创建时间'},
@@ -231,8 +231,12 @@ export default {
       for (let i = 0; i < data[0].length; i++) {
         // 存入字段名和excel表中的名称的映射，记得修改
         this.jsonList[i] = {}
-        this.jsonList[i].number = data[0][i]['部门编号']
-        this.jsonList[i].name = data[0][i]['部门名称']
+        this.jsonList[i].name = data[0][i]['类别名称']
+        this.jsonList[i].number = data[0][i]['类别编号']
+        this.jsonList[i].brand = data[0][i]['品牌']
+        this.jsonList[i].specificationModel = data[0][i]['规格型号']
+        this.jsonList[i].unit = data[0][i]['（计量）单位']
+        this.jsonList[i].remarks = data[0][i]['备注']
       }
     }
     // 批量导入时上面三个方法，一起复制。

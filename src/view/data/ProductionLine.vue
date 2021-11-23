@@ -24,11 +24,19 @@ export default {
   name: 'ProductionLine',
   data () {
     return {
-      tableSearchList: [],
+      searchList: [
+        {value: 'name', label: '生产线名'},
+        {value: 'number', label: '生产线编号'},
+        {value: 'chargePerson', label: '负责人'},
+        {value: 'createUser', label: '创建人'},
+        {value: 'createGmt', label: '创建时间'},
+        {value: 'modifiedUser', label: '最后修改人'},
+        {value: 'modifiedGmt', label: '最后修改时间'}
+      ],
       tableHeaderList: [
         {value: 'name', label: '生产线名', width: 200},
         {value: 'number', label: '生产线编号', width: 200},
-        {value: 'fixed', label: '其他字段', minWidth: 200},
+        {value: 'chargePerson', label: '负责人', width: 200},
         {value: 'createUser', label: '创建人', width: 200},
         {value: 'createGmt', label: '创建时间', width: 200},
         {value: 'modifiedUser', label: '最后修改人', width: 200},

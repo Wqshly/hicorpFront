@@ -29,7 +29,6 @@ export default {
         {value: 'number', label: '库位编号', minWidth: 200},
         {value: 'warehouseName', label: '所属仓库名', minWidth: 200},
         {value: 'warehouseNumber', label: '所属仓库号', minWidth: 200},
-        {value: 'fixed', label: '其他字段', minWidth: 200},
         {value: 'createUser', label: '创建人', width: 200},
         {value: 'createGmt', label: '创建时间', width: 200},
         {value: 'modifiedUser', label: '最后修改人', width: 200},

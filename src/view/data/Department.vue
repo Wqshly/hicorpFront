@@ -105,9 +105,6 @@ export default {
         ],
         description: [
           {required: true, message: '简介不能为空!', trigger: 'blur'}
-        ],
-        remark: [
-          {required: true, message: '备注不能为空!', trigger: 'blur'}
         ]
       },
       editForm: {id: null, number: null, name: null, description: null, remark: null},
@@ -120,9 +117,6 @@ export default {
         ],
         description: [
           {required: true, message: '简介不能为空!', trigger: 'blur'}
-        ],
-        remark: [
-          {required: true, message: '备注不能为空!', trigger: 'blur'}
         ]
       },
       // 按钮显示控制 buttonShow: {}
@@ -192,6 +186,8 @@ export default {
         this.jsonList[i] = {}
         this.jsonList[i].number = data[0][i]['部门编号']
         this.jsonList[i].name = data[0][i]['部门名称']
+        this.jsonList[i].description = data[0][i]['简介']
+        this.jsonList[i].remark = data[0][i]['备注']
       }
     }
     // 批量导入时上面三个方法，一起复制。

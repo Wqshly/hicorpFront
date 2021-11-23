@@ -5,15 +5,147 @@
         :table-header-list="tableHeaderList">
         <el-form slot="addForm" :model="addForm" style="overflow: auto" label-width="120px" ref="addForm"
                  :rules="addFormRules">
-          <el-form-item label="添加示例：" prop="name">
-            <el-input v-model="addForm.name"></el-input>
-          </el-form-item>
+          <el-row>
+            <el-col :span="12">
+              <el-form-item label="合同编号：" prop="number">
+                <el-input v-model="addForm.number"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="合同名称：" prop="name">
+                <el-input v-model="addForm.name"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="客户编号：" prop="customerNumber">
+                <el-input  v-model="addForm.customerNumber"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="客户名称：" prop="customerName">
+                <el-input  v-model="addForm.customerNumber"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="24">
+              <el-form-item label="签约日期：" prop="customerName">
+                <el-date-picker
+                  v-model="editForm.wordYear"
+                  type="date"
+                  placeholder="选择日期">
+                </el-date-picker>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="合同开始日期：" prop="customerName">
+                <el-date-picker
+                  v-model="editForm.wordYear"
+                  type="date"
+                  placeholder="选择日期">
+                </el-date-picker>
+              </el-form-item>
+            </el-col>
+            <el-col :span="24">
+              <el-form-item label="合同结束日期：" prop="customerName">
+                <el-date-picker
+                  v-model="editForm.wordYear"
+                  type="date"
+                  placeholder="选择日期">
+                </el-date-picker>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="状态编码：" prop="statusCode">
+                <el-input  v-model="addForm.statusCode"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="状态：" prop="status">
+                <el-input  v-model="addForm.status"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="合同总金额：" prop="totalAmount">
+                <el-input  v-model="addForm.status"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="合同进度：" prop="progress">
+                <el-input  v-model="addForm.status"></el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
         </el-form>
         <el-form slot="editForm" :model="editForm" style="overflow: auto" label-width="120px" ref="editForm"
                  :rules="editFormRules">
-          <el-form-item label="修改示例：" prop="name">
-            <el-input v-model="editForm.name"></el-input>
-          </el-form-item>
+          <el-row>
+            <el-col :span="12">
+              <el-form-item label="合同编号：" prop="number">
+                <el-input v-model="addForm.number"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="合同名称：" prop="name">
+                <el-input v-model="addForm.name"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="客户编号：" prop="customerNumber">
+                <el-input  v-model="addForm.customerNumber"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="客户名称：" prop="customerName">
+                <el-input  v-model="addForm.customerNumber"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="24">
+              <el-form-item label="签约日期：" prop="customerName">
+                <el-date-picker
+                  v-model="editForm.wordYear"
+                  type="date"
+                  placeholder="选择日期">
+                </el-date-picker>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="合同开始日期：" prop="customerName">
+                <el-date-picker
+                  v-model="editForm.wordYear"
+                  type="date"
+                  placeholder="选择日期">
+                </el-date-picker>
+              </el-form-item>
+            </el-col>
+            <el-col :span="24">
+              <el-form-item label="合同结束日期：" prop="customerName">
+                <el-date-picker
+                  v-model="editForm.wordYear"
+                  type="date"
+                  placeholder="选择日期">
+                </el-date-picker>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="状态编码：" prop="statusCode">
+                <el-input  v-model="addForm.statusCode"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="状态：" prop="status">
+                <el-input  v-model="addForm.status"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="合同总金额：" prop="totalAmount">
+                <el-input  v-model="addForm.status"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="合同进度：" prop="progress">
+                <el-input  v-model="addForm.status"></el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
         </el-form>
       </basic-table-temp>
     </div>

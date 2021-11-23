@@ -222,8 +222,11 @@ export default {
       for (let i = 0; i < data[0].length; i++) {
         // 存入字段名和excel表中的名称的映射，记得修改
         this.jsonList[i] = {}
-        this.jsonList[i].number = data[0][i]['部门编号']
-        this.jsonList[i].name = data[0][i]['部门名称']
+        this.jsonList[i].number = data[0][i]['设备编号']
+        this.jsonList[i].name = data[0][i]['设备名称']
+        this.jsonList[i].address = data[0][i]['存放点位']
+        this.jsonList[i].status = data[0][i]['状态']
+        this.jsonList[i].useBegin = data[0][i]['开始使用时间']
       }
     }
     // 批量导入时上面三个方法，一起复制。

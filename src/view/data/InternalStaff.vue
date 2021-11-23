@@ -115,6 +115,7 @@ export default {
         {value: 'number', label: '员工编号'},
         {value: 'sex', label: '性别'},
         {value: 'idCard', label: '身份证号'},
+        {value: 'phoneNumber', label: '手机号'},
         {value: 'wordYear', label: '入职时间'},
         {value: 'createUser', label: '创建人'},
         {value: 'createGmt', label: '创建时间'},
@@ -126,6 +127,7 @@ export default {
         {value: 'number', label: '员工编号', width: 200},
         {value: 'sex', label: '性别', width: 200},
         {value: 'idCard', label: '身份证号', width: 200},
+        {value: 'phoneNumber', label: '手机号', width: 200},
         {value: 'wordYear', label: '入职时间', width: 200},
         {value: 'createUser', label: '创建人', width: 200},
         {value: 'createGmt', label: '创建时间', width: 200},
@@ -232,8 +234,12 @@ export default {
       for (let i = 0; i < data[0].length; i++) {
         // 存入字段名和excel表中的名称的映射，记得修改
         this.jsonList[i] = {}
-        this.jsonList[i].number = data[0][i]['部门编号']
-        this.jsonList[i].name = data[0][i]['部门名称']
+        this.jsonList[i].name = data[0][i]['员工姓名']
+        this.jsonList[i].number = data[0][i]['员工编号']
+        this.jsonList[i].sex = data[0][i]['性别']
+        this.jsonList[i].idCard = data[0][i]['身份证号']
+        this.jsonList[i].phoneNumber = data[0][i]['手机号']
+        this.jsonList[i].wordYear = data[0][i]['入职时间']
       }
     }
     // 批量导入时上面三个方法，一起复制。
